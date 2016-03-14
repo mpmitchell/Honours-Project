@@ -41,8 +41,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Level
+  - name: Floor
     uniqueID: 1268667465
+    locked: 0
+  - name: Level Objects
+    uniqueID: 3850198033
     locked: 0
   - name: Items
     uniqueID: 4073730775
