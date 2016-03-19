@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 449152}
   - 212: {fileID: 21215790}
-  - 95: {fileID: 9529774}
+  - 61: {fileID: 6133528}
   m_Layer: 0
   m_Name: Pit
   m_TagString: Untagged
@@ -29,23 +29,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!95 &9529774
-Animator:
-  serializedVersion: 3
+--- !u!61 &6133528
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162706}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!212 &21215790
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -72,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1268667465
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300020, guid: e3b567805a68a47018689c2530be0b22, type: 3}
+  m_Sprite: {fileID: 21300038, guid: 405a1b1669d9640c0a77e0e4a28895b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
