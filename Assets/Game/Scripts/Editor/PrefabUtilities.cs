@@ -3,7 +3,8 @@ using UnityEditor;
 
 public class PrefabUtilities : EditorWindow {
 
-  GameObject prefab;
+  GameObject prefab = null;
+  string prefabPath = "";
 
   [MenuItem("Tools/Prefab Utilities")]
   public static void ShowWindow() {
@@ -12,7 +13,6 @@ public class PrefabUtilities : EditorWindow {
 
   void OnGUI() {
     EditorGUILayout.BeginHorizontal();
-    GUILayout.MaxHeight(1.0f);
 
       if (GUILayout.Button("Disconnect")) {
         foreach (GameObject gameObject in Selection.gameObjects) {
@@ -41,11 +41,13 @@ public class PrefabUtilities : EditorWindow {
 
     EditorGUILayout.EndHorizontal();
 
+    prefabPath = GUILayout.TextField(prefabPath);
+
     EditorGUILayout.BeginHorizontal();
 
       if (GUILayout.Button("Make Prefab")) {
         foreach (GameObject gameObject in Selection.gameObjects) {
-          prefab = PrefabUtility.CreatePrefab("Assets/Game/Prefabs/" + gameObject.name + ".prefab", gameObject);
+          prefab = PrefabUtility.CreatePrefab("Assets/Game/Prefabs/" + prefabPath + gameObject.name + ".prefab", gameObject);
           PrefabUtility.ConnectGameObjectToPrefab(gameObject, prefab);
         }
       }

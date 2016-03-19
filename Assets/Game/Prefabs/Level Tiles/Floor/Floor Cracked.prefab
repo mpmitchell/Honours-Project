@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 484862}
   - 212: {fileID: 21259460}
+  - 61: {fileID: 6167556}
   m_Layer: 0
   m_Name: Floor Cracked
   m_TagString: Untagged
@@ -28,6 +29,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6167556
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!212 &21259460
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -54,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1268667465
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300014, guid: e3b567805a68a47018689c2530be0b22, type: 3}
+  m_Sprite: {fileID: 21300042, guid: 2a9e4469a1184427dad4625cfeb11f13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
