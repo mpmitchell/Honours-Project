@@ -14,7 +14,7 @@ TagManager:
   - 
   - 
   - Wall
-  - 
+  - Sword
   - 
   - 
   - 
@@ -53,9 +53,9 @@ TagManager:
   - name: Items
     uniqueID: 4073730775
     locked: 0
-  - name: Player
-    uniqueID: 2498377595
-    locked: 0
   - name: Player Weapon
     uniqueID: 215867601
+    locked: 0
+  - name: Player
+    uniqueID: 2498377595
     locked: 0
