@@ -9,12 +9,15 @@ public class PlayerController : MonoBehaviour {
   float dx;
   float dy;
 
+  Animator animator;
+
   static int wallLayerMask;
   static Vector2 colliderExtents;
 
   const float BOX_CAST_DISTANCE = 0.1f;
 
   void Awake() {
+    animator = GetComponent<Animator>();
     wallLayerMask = LayerMask.GetMask("Wall");
     colliderExtents = GetComponent<BoxCollider2D>().bounds.extents;
   }
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     CollisionCheck(ref dx, ref dy);
+    Animate(dx, dy);
 
     transform.Translate(new Vector3(dx, dy, 0.0f));
   }
@@ -85,6 +89,28 @@ public class PlayerController : MonoBehaviour {
         dy = 0;
         hitRight.collider.SendMessage("PushUp", SendMessageOptions.DontRequireReceiver);
       }
+    }
+  }
+
+  void Animate(float dx, float dy) {
+    if (dx < 0) {
+      animator.SetInteger("Direction", (int)Direction.Left);
+      animator.SetBool("Moving", true);
+    } else if (dx > 0) {
+      animator.SetInteger("Direction", (int)Direction.Right);
+      animator.SetBool("Moving", true);
+    }
+
+    if (dy < 0) {
+      animator.SetInteger("Direction", (int)Direction.Down);
+      animator.SetBool("Moving", true);
+    } else if (dy > 0) {
+      animator.SetInteger("Direction", (int)Direction.Up);
+      animator.SetBool("Moving", true);
+    }
+
+    if (dx == 0 && dy == 0) {
+      animator.SetBool("Moving", false);
     }
   }
 }

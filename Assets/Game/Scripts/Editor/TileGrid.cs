@@ -12,9 +12,18 @@ public class TileGrid : EditorWindow {
   }
 
   void OnGUI() {
-    x = EditorGUILayout.IntSlider("x", x, 1, 15);
-    y = EditorGUILayout.IntSlider("y", y, 1, 11);
+    EditorGUILayout.BeginHorizontal();
 
+      GUILayout.Label("X: " + x);
+      x = (int)GUILayout.HorizontalSlider(x, -15, 15);
+
+    EditorGUILayout.EndHorizontal();
+    EditorGUILayout.BeginHorizontal();
+
+      GUILayout.Label("Y: " + y);
+      y = (int)GUILayout.HorizontalSlider(y, -11, 11);
+
+    EditorGUILayout.EndHorizontal();
     EditorGUILayout.BeginHorizontal();
 
       if (GUILayout.Button("Clone")) {
@@ -22,13 +31,19 @@ public class TileGrid : EditorWindow {
         GameObject prefab = PrefabUtility.GetPrefabParent(target) as GameObject;
         Vector3 origin = target.transform.position;
 
-        for (int i = 0; i < x; i++) {
-          for (int j = 0; j < y; j++) {
+        float dx = Mathf.Sign(x);
+        float dy = Mathf.Sign(y);
+
+        float x_ = Mathf.Abs(x);
+        float y_ = Mathf.Abs(y);
+
+        for (int i = 0; i < x_; i++) {
+          for (int j = 0; j < y_; j++) {
             if (i == 0 && j == 0) {
               continue;
             }
 
-            Vector3 position = new Vector3(origin.x + i, origin.y + j, origin.z);
+            Vector3 position = new Vector3(origin.x + i * dx, origin.y + j * dy, origin.z);
             GameObject clone = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
             clone.transform.position = position;
             clone.transform.parent = target.transform.parent;
@@ -42,15 +57,5 @@ public class TileGrid : EditorWindow {
       }
 
     EditorGUILayout.EndHorizontal();
-
-    if (GUILayout.Button("Snap to Grid")) {
-      foreach (GameObject gameObject in Selection.gameObjects) {
-        gameObject.transform.position = new Vector3(
-          Mathf.Round(gameObject.transform.position.x),
-          Mathf.Round(gameObject.transform.position.y),
-          gameObject.transform.position.z
-          );
-      }
-    }
   }
 }

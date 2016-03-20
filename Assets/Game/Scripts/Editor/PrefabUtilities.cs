@@ -28,7 +28,6 @@ public class PrefabUtilities : EditorWindow {
       }
 
     EditorGUILayout.EndHorizontal();
-
     EditorGUILayout.BeginHorizontal();
 
       if (GUILayout.Button("Connect to")) {
@@ -47,7 +46,7 @@ public class PrefabUtilities : EditorWindow {
 
       if (GUILayout.Button("Make Prefab")) {
         foreach (GameObject gameObject in Selection.gameObjects) {
-          prefab = PrefabUtility.CreatePrefab("Assets/Game/Prefabs/" + prefabPath + gameObject.name + ".prefab", gameObject);
+          prefab = PrefabUtility.CreatePrefab("Assets/Game/Prefabs/" + prefabPath + "/" + gameObject.name + ".prefab", gameObject);
           PrefabUtility.ConnectGameObjectToPrefab(gameObject, prefab);
         }
       }
