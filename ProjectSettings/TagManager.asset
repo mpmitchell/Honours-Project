@@ -44,6 +44,9 @@ TagManager:
   - name: Floor
     uniqueID: 1268667465
     locked: 0
+  - name: Walls
+    uniqueID: 2058338267
+    locked: 0
   - name: Level Objects
     uniqueID: 3850198033
     locked: 0
@@ -52,4 +55,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2498377595
+    locked: 0
+  - name: Player Weapon
+    uniqueID: 215867601
     locked: 0

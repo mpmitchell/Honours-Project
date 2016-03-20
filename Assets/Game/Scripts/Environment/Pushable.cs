@@ -2,13 +2,6 @@
 
 public class Pushable : MonoBehaviour {
 
-  public enum Direction {
-    Left = 1,
-    Right = 2,
-    Down = 4,
-    Up = 8
-  }
-
   [HideInInspector] public int directions;
 
   [SerializeField] bool onlyOnce = true;
