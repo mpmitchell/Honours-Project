@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
   float dy;
 
   Animator animator;
+  int moving = 0;
 
   static int wallLayerMask;
   static Vector2 colliderExtents;
@@ -95,22 +96,37 @@ public class PlayerController : MonoBehaviour {
   void Animate(float dx, float dy) {
     if (dx < 0) {
       animator.SetInteger("Direction", (int)Direction.Left);
-      animator.SetBool("Moving", true);
+      if (moving != (int)Direction.Left) {
+        animator.SetTrigger("StartedMoving");
+        moving = (int)Direction.Left;
+      }
     } else if (dx > 0) {
       animator.SetInteger("Direction", (int)Direction.Right);
-      animator.SetBool("Moving", true);
+      if (moving != (int)Direction.Right) {
+        animator.SetTrigger("StartedMoving");
+        moving = (int)Direction.Right;
+      }
     }
 
     if (dy < 0) {
       animator.SetInteger("Direction", (int)Direction.Down);
-      animator.SetBool("Moving", true);
+      if (moving != (int)Direction.Down) {
+        animator.SetTrigger("StartedMoving");
+        moving = (int)Direction.Down;
+      }
     } else if (dy > 0) {
       animator.SetInteger("Direction", (int)Direction.Up);
-      animator.SetBool("Moving", true);
+      if (moving != (int)Direction.Up) {
+        animator.SetTrigger("StartedMoving");
+        moving = (int)Direction.Up;
+      }
     }
 
     if (dx == 0 && dy == 0) {
-      animator.SetBool("Moving", false);
+      if (moving != 0) {
+        animator.SetTrigger("StoppedMoving");
+        moving = 0;
+      }
     }
   }
 }
