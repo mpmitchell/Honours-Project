@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class ArrowPool : MonoBehaviour {
+public class Bow : MonoBehaviour {
+
   [SerializeField] GameObject arrowPrefab;
   [SerializeField] int numberOfArrows;
 
@@ -10,9 +11,17 @@ public class ArrowPool : MonoBehaviour {
   void Awake() {
     for (int i = 0; i < numberOfArrows; i++) {
       GameObject arrow = Instantiate(arrowPrefab) as GameObject;
-      arrow.GetComponent<Arrow>().pool = this;
+      arrow.GetComponent<Arrow>().bow = this;
       ReturnArrow(arrow);
       arrowPool.Push(arrow);
+    }
+  }
+
+  public void Fire(Direction direction) {
+    GameObject arrow = GetArrow();
+
+    if (arrow != null) {
+      arrow.GetComponent<Arrow>().Activate(transform.position, direction);
     }
   }
 

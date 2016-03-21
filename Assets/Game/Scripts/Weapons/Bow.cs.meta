@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: e9902016436af43c0b6aa4c3689ee087
-timeCreated: 1458555791
+guid: c2256c6983bde42bc90daae1324a8c82
+timeCreated: 1458566575
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - arrowPrefab: {fileID: 139914, guid: ba461715d222a4e77a085fca60760274, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

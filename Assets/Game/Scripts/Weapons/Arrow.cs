@@ -4,7 +4,7 @@ public class Arrow : MonoBehaviour {
 
   [Range(1, 10)] [SerializeField] int speed;
 
-  [HideInInspector] public ArrowPool pool;
+  [HideInInspector] public Bow bow;
 
   Vector3 direction;
 
@@ -13,7 +13,7 @@ public class Arrow : MonoBehaviour {
   }
 
   void OnCollisionEnter2D(Collision2D collision) {
-    pool.ReturnArrow(gameObject);
+    bow.ReturnArrow(gameObject);
   }
 
   public void Activate(Vector3 origin, Direction direction) {
