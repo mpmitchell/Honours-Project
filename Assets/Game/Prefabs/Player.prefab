@@ -10,10 +10,11 @@ GameObject:
   - 4: {fileID: 484824}
   - 212: {fileID: 21263806}
   - 114: {fileID: 11457564}
+  - 114: {fileID: 11488076}
   - 61: {fileID: 6128140}
   - 50: {fileID: 5074082}
   - 95: {fileID: 9570378}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -144,6 +145,19 @@ MonoBehaviour:
   speed: 2
   runningSpeed: 4
   attacking: 0
+--- !u!114 &11488076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9902016436af43c0b6aa4c3689ee087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 139914, guid: ba461715d222a4e77a085fca60760274, type: 2}
+  numberOfArrows: 2
 --- !u!212 &21249560
 SpriteRenderer:
   m_ObjectHideFlags: 1
