@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour {
       dy = 0.0f;
     }
 
+    SetAnimationDirection(dx, dy);
     CollisionCheck(ref dx, ref dy);
     Animate(dx, dy);
 
@@ -47,6 +48,20 @@ public class PlayerController : MonoBehaviour {
     if (!attacking && Input.GetButtonDown("Attack")) {
       animator.SetTrigger("Attack");
       attacking = true;
+    }
+  }
+
+  void SetAnimationDirection(float dx, float dy) {
+    if (dx < 0.0f) {
+      animator.SetInteger("Direction", (int)Direction.Left);
+    } else if (dx > 0.0f) {
+      animator.SetInteger("Direction", (int)Direction.Right);
+    }
+
+    if (dy < 0.0f) {
+      animator.SetInteger("Direction", (int)Direction.Down);
+    } else if (dy > 0.0f) {
+      animator.SetInteger("Direction", (int)Direction.Up);
     }
   }
 
@@ -102,32 +117,20 @@ public class PlayerController : MonoBehaviour {
   }
 
   void Animate(float dx, float dy) {
-    if (dx < 0.0f) {
-      animator.SetInteger("Direction", (int)Direction.Left);
-      if (moving != (int)Direction.Left) {
-        animator.SetTrigger("StartedMoving");
-        moving = (int)Direction.Left;
-      }
-    } else if (dx > 0.0f) {
-      animator.SetInteger("Direction", (int)Direction.Right);
-      if (moving != (int)Direction.Right) {
-        animator.SetTrigger("StartedMoving");
-        moving = (int)Direction.Right;
-      }
+    if (dx < 0.0f && moving != (int)Direction.Left) {
+      animator.SetTrigger("StartedMoving");
+      moving = (int)Direction.Left;
+    } else if (dx > 0.0f && moving != (int)Direction.Right) {
+      animator.SetTrigger("StartedMoving");
+      moving = (int)Direction.Right;
     }
 
-    if (dy < 0.0f) {
-      animator.SetInteger("Direction", (int)Direction.Down);
-      if (moving != (int)Direction.Down) {
-        animator.SetTrigger("StartedMoving");
-        moving = (int)Direction.Down;
-      }
-    } else if (dy > 0.0f) {
-      animator.SetInteger("Direction", (int)Direction.Up);
-      if (moving != (int)Direction.Up) {
-        animator.SetTrigger("StartedMoving");
-        moving = (int)Direction.Up;
-      }
+    if (dy < 0.0f && moving != (int)Direction.Down) {
+      animator.SetTrigger("StartedMoving");
+      moving = (int)Direction.Down;
+    } else if (dy > 0.0f && moving != (int)Direction.Up) {
+      animator.SetTrigger("StartedMoving");
+      moving = (int)Direction.Up;
     }
 
     if (dx == 0.0f && dy == 0.0f) {
