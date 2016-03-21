@@ -10,7 +10,8 @@ public class ArrowPool : MonoBehaviour {
   void Awake() {
     for (int i = 0; i < numberOfArrows; i++) {
       GameObject arrow = Instantiate(arrowPrefab) as GameObject;
-      arrow.SetActive(false);
+      arrow.GetComponent<Arrow>().pool = this;
+      ReturnArrow(arrow);
       arrowPool.Push(arrow);
     }
   }
@@ -21,5 +22,10 @@ public class ArrowPool : MonoBehaviour {
     } else {
       return null;
     }
+  }
+
+  public void ReturnArrow(GameObject arrow) {
+    arrow.SetActive(false);
+    arrowPool.Push(arrow);
   }
 }
