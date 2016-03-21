@@ -2,23 +2,26 @@
 
 public class PlayerController : MonoBehaviour {
 
-  [Range(1, 100)] [SerializeField] float speed;
-  [Range(1, 100)] [SerializeField] float runningSpeed;
+  [Range(1, 10)] [SerializeField] int speed;
+  [Range(1, 10)] [SerializeField] int runningSpeed;
 
-  Animator animator;
-  int moving = 0;
-  [HideInInspector] public bool attacking = false;
-
+  const float BOX_CAST_DISTANCE = 0.1f;
   static int wallLayerMask;
   static Vector2 colliderExtents;
 
-  const float BOX_CAST_DISTANCE = 0.1f;
+  Animator animator;
+  bool moving = false;
+  Direction direction = Direction.Down;
+  [HideInInspector] public bool attacking = false;
+
+  ArrowPool arrowPool;
 
   void Awake() {
-    animator = GetComponent<Animator>();
     wallLayerMask = LayerMask.GetMask("Wall");
     colliderExtents = GetComponent<BoxCollider2D>().bounds.extents;
+    animator = GetComponent<Animator>();
     animator.GetBehaviour<PlayerAnimator>().controller = this;
+    arrowPool = GetComponent<ArrowPool>();
   }
 
   void Update() {
@@ -35,30 +38,43 @@ public class PlayerController : MonoBehaviour {
         dy *= speed * Time.deltaTime;
       }
 
-      SetAnimationDirection(dx, dy);
+      SetDirection(dx, dy);
       CollisionCheck(ref dx, ref dy);
-      SetAnimatorMoving(dx, dy);
+      SetMoving(dx, dy);
 
       transform.Translate(new Vector3(dx, dy, 0.0f));
 
       if (Input.GetButtonDown("Attack")) {
         animator.SetTrigger("Attack");
         attacking = true;
+        moving = false;
+      }
+
+      if (Input.GetButtonDown("Fire Arrow")) {
+        GameObject arrow = arrowPool.GetArrow();
+
+        if (arrow != null) {
+          arrow.GetComponent<Arrow>().Activate(transform.position, direction);
+        }
       }
     }
   }
 
-  void SetAnimationDirection(float dx, float dy) {
+  void SetDirection(float dx, float dy) {
     if (dx < 0.0f) {
-      animator.SetInteger("Direction", (int)Direction.Left);
+      direction = Direction.Left;
+      animator.SetInteger("Direction", (int)direction);
     } else if (dx > 0.0f) {
-      animator.SetInteger("Direction", (int)Direction.Right);
+      direction = Direction.Right;
+      animator.SetInteger("Direction", (int)direction);
     }
 
     if (dy < 0.0f) {
-      animator.SetInteger("Direction", (int)Direction.Down);
+      direction = Direction.Down;
+      animator.SetInteger("Direction", (int)direction);
     } else if (dy > 0.0f) {
-      animator.SetInteger("Direction", (int)Direction.Up);
+      direction = Direction.Up;
+      animator.SetInteger("Direction", (int)direction);
     }
   }
 
@@ -113,27 +129,16 @@ public class PlayerController : MonoBehaviour {
     }
   }
 
-  void SetAnimatorMoving(float dx, float dy) {
-    if (dx < 0.0f && moving != (int)Direction.Left) {
-      animator.SetTrigger("StartedMoving");
-      moving = (int)Direction.Left;
-    } else if (dx > 0.0f && moving != (int)Direction.Right) {
-      animator.SetTrigger("StartedMoving");
-      moving = (int)Direction.Right;
-    }
-
-    if (dy < 0.0f && moving != (int)Direction.Down) {
-      animator.SetTrigger("StartedMoving");
-      moving = (int)Direction.Down;
-    } else if (dy > 0.0f && moving != (int)Direction.Up) {
-      animator.SetTrigger("StartedMoving");
-      moving = (int)Direction.Up;
-    }
-
+  void SetMoving(float dx, float dy) {
     if (dx == 0.0f && dy == 0.0f) {
-      if (moving != 0) {
+      if (moving) {
         animator.SetTrigger("StoppedMoving");
-        moving = 0;
+        moving = false;
+      }
+    } else {
+      if (!moving) {
+        animator.SetTrigger("StartedMoving");
+        moving = true;
       }
     }
   }
