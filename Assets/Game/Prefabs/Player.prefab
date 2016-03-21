@@ -12,7 +12,6 @@ GameObject:
   - 114: {fileID: 11457564}
   - 114: {fileID: 11488076}
   - 61: {fileID: 6128140}
-  - 50: {fileID: 5074082}
   - 95: {fileID: 9570378}
   m_Layer: 10
   m_Name: Player
@@ -30,7 +29,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 440216}
   - 212: {fileID: 21249560}
-  - 60: {fileID: 6046036}
+  - 60: {fileID: 6016522}
   m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
@@ -63,24 +62,7 @@ Transform:
   - {fileID: 440216}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &5074082
-Rigidbody2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154086}
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!60 &6046036
+--- !u!60 &6016522
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,17 +71,16 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -0.47377735, y: 0.5821507}
-      - {x: -0.49477535, y: 0.25760734}
-      - {x: 0.04240594, y: -0.30276272}
-      - {x: 0.18684329, y: -0.24213982}
-      - {x: 0.19809897, y: -0.082963325}
-      - {x: -0.14112277, y: 0.27848354}
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.47042102, y: 0.28530467}
+      - {x: 0.10610538, y: -0.35213125}
+      - {x: 0.24091436, y: -0.12865445}
+      - {x: -0.43276083, y: 0.539001}
 --- !u!61 &6128140
 BoxCollider2D:
   m_ObjectHideFlags: 1
