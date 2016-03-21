@@ -22,32 +22,29 @@ public class PlayerController : MonoBehaviour {
   }
 
   void Update() {
-    float dx = Input.GetAxis("Horizontal");
-    float dy = Input.GetAxis("Vertical");
-    bool running = Input.GetButton("Run");
+    if (!attacking) {
+      float dx = Input.GetAxis("Horizontal");
+      float dy = Input.GetAxis("Vertical");
+      bool running = Input.GetButton("Run");
 
-    if (running) {
-      dx *= runningSpeed * Time.deltaTime;
-      dy *= runningSpeed * Time.deltaTime;
-    } else {
-      dx *= speed * Time.deltaTime;
-      dy *= speed * Time.deltaTime;
-    }
+      if (running) {
+        dx *= runningSpeed * Time.deltaTime;
+        dy *= runningSpeed * Time.deltaTime;
+      } else {
+        dx *= speed * Time.deltaTime;
+        dy *= speed * Time.deltaTime;
+      }
 
-    if (attacking) {
-      dx = 0.0f;
-      dy = 0.0f;
-    }
+      SetAnimationDirection(dx, dy);
+      CollisionCheck(ref dx, ref dy);
+      SetAnimatorMoving(dx, dy);
 
-    SetAnimationDirection(dx, dy);
-    CollisionCheck(ref dx, ref dy);
-    Animate(dx, dy);
+      transform.Translate(new Vector3(dx, dy, 0.0f));
 
-    transform.Translate(new Vector3(dx, dy, 0.0f));
-
-    if (!attacking && Input.GetButtonDown("Attack")) {
-      animator.SetTrigger("Attack");
-      attacking = true;
+      if (Input.GetButtonDown("Attack")) {
+        animator.SetTrigger("Attack");
+        attacking = true;
+      }
     }
   }
 
@@ -116,7 +113,7 @@ public class PlayerController : MonoBehaviour {
     }
   }
 
-  void Animate(float dx, float dy) {
+  void SetAnimatorMoving(float dx, float dy) {
     if (dx < 0.0f && moving != (int)Direction.Left) {
       animator.SetTrigger("StartedMoving");
       moving = (int)Direction.Left;
