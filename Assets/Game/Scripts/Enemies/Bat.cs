@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Bat : MonoBehaviour {
+public class Bat : Entity {
 
   [SerializeField] [Range(1, 10)] int speed;
   [SerializeField] LayerMask wallLayerMask;

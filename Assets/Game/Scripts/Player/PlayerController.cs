@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : Entity {
 
   [SerializeField] [Range(1, 10)] int speed;
   [SerializeField] [Range(1, 10)] int runningSpeed;
@@ -136,5 +136,9 @@ public class PlayerController : MonoBehaviour {
         moving = true;
       }
     }
+  }
+
+  protected override void Dead() {
+    // Game Over
   }
 }
