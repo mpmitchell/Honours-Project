@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  canBreak: 1
   targetLayers:
     serializedVersion: 2
     m_Bits: 24576
