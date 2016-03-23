@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11404356}
   - 60: {fileID: 6009718}
   - 50: {fileID: 5077690}
+  - 95: {fileID: 9565718}
   m_Layer: 14
   m_Name: Bat
   m_TagString: Untagged
@@ -76,6 +77,23 @@ PolygonCollider2D:
       - {x: 0.20802522, y: 0.11712122}
       - {x: 0.486614, y: 0.26772404}
       - {x: 0.5, y: 0.5}
+--- !u!95 &9565718
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7fe883b50bc0646f1ad863a5a80c2c3b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11404356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,10 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3e764ea40464fd3947ade90a8dead5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 5
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  projectionFactor: 6
 --- !u!114 &11419086
 MonoBehaviour:
   m_ObjectHideFlags: 1
