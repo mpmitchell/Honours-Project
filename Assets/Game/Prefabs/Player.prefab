@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11457564}
   - 114: {fileID: 11460670}
   - 114: {fileID: 11488076}
+  - 114: {fileID: 11481802}
   - 61: {fileID: 6128140}
   - 95: {fileID: 9570378}
   - 50: {fileID: 5034680}
@@ -161,6 +162,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+--- !u!114 &11481802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa8fcf7ad2b3424d89758688d123a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 142678, guid: b7d095c3beb6d4a269c17e48c8940eff, type: 2}
+  maxNumberOfBombs: 1
 --- !u!114 &11488076
 MonoBehaviour:
   m_ObjectHideFlags: 1

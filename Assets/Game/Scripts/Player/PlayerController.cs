@@ -52,6 +52,10 @@ public class PlayerController : Entity {
       if (Input.GetButtonDown("Fire Arrow")) {
         SendMessage("FireProjectile", direction);
       }
+
+      if (Input.GetButtonDown("Drop Bomb")) {
+        SendMessage("DropBomb");
+      }
     }
   }
 
