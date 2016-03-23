@@ -2,10 +2,10 @@
 
 public class DeathAnimator : StateMachineBehaviour {
 
-  GameObject target;
+  public GameObject target;
 
   override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    if (stateInfo.IsTag("Death")) {
+    if (stateInfo.IsTag("Dead")) {
       target.SendMessage("Dead");
     }
 	}

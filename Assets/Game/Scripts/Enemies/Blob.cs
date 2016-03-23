@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Blob : MonoBehaviour {
+public class Blob : Entity {
 
   [SerializeField] [Range(1, 10)] int speed;
   [SerializeField] [Range(1, 10)] int jumpingSpeed;

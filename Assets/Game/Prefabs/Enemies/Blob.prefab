@@ -60,7 +60,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
@@ -114,9 +114,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2199a6fecb3624c21bab966e41386944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  jumpingSpeed: 0
-  jumpDistance: 0
+  speed: 1
+  jumpingSpeed: 4
+  jumpDistance: 2
+  jumpCooldown: 2
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 33024
+  jumping: 0
 --- !u!114 &11461260
 MonoBehaviour:
   m_ObjectHideFlags: 1
