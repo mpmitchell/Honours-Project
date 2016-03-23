@@ -14,14 +14,11 @@ public class PlayerController : MonoBehaviour {
   Direction direction = Direction.Down;
   [HideInInspector] public bool attacking = false;
 
-  Bow bow;
-
   void Awake() {
     wallLayerMask = LayerMask.GetMask("Wall");
     colliderExtents = GetComponent<BoxCollider2D>().bounds.extents;
     animator = GetComponent<Animator>();
     animator.GetBehaviour<PlayerAnimator>().controller = this;
-    bow = GetComponent<Bow>();
   }
 
   void Update() {
@@ -51,7 +48,7 @@ public class PlayerController : MonoBehaviour {
       }
 
       if (Input.GetButtonDown("Fire Arrow")) {
-        bow.Fire(direction);
+        SendMessage("FireProjectile", direction);
       }
     }
   }
