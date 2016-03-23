@@ -33,7 +33,8 @@ GameObject:
   - 4: {fileID: 440216}
   - 212: {fileID: 21249560}
   - 114: {fileID: 11494282}
-  - 60: {fileID: 6016522}
+  - 60: {fileID: 6094584}
+  - 50: {fileID: 5073726}
   m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
@@ -83,7 +84,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6016522
+--- !u!50 &5073726
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158266}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &6094584
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -97,11 +115,10 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: 0.5}
-      - {x: -0.47042102, y: 0.28530467}
-      - {x: 0.10610538, y: -0.35213125}
-      - {x: 0.24091436, y: -0.12865445}
-      - {x: -0.43276083, y: 0.539001}
+    - - {x: -0.3292348, y: 0.71227044}
+      - {x: -0.70652914, y: 0.3491965}
+      - {x: -0.00814952, y: -0.48926723}
+      - {x: 0.43870485, y: -0.12366801}
 --- !u!61 &6128140
 BoxCollider2D:
   m_ObjectHideFlags: 1
