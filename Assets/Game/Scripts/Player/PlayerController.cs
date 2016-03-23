@@ -2,11 +2,11 @@
 
 public class PlayerController : MonoBehaviour {
 
-  [Range(1, 10)] [SerializeField] int speed;
-  [Range(1, 10)] [SerializeField] int runningSpeed;
+  [SerializeField] [Range(1, 10)] int speed;
+  [SerializeField] [Range(1, 10)] int runningSpeed;
+  [SerializeField] LayerMask obstacleLayerMask;
 
   const float BOX_CAST_DISTANCE = 0.1f;
-  static int wallLayerMask;
   static Vector2 colliderExtents;
 
   Animator animator;
@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour {
   [HideInInspector] public bool attacking = false;
 
   void Awake() {
-    wallLayerMask = LayerMask.GetMask("Wall");
     colliderExtents = GetComponent<BoxCollider2D>().bounds.extents;
     animator = GetComponent<Animator>();
     animator.GetBehaviour<PlayerAnimator>().controller = this;
@@ -78,8 +77,8 @@ public class PlayerController : MonoBehaviour {
     float top =    transform.position.y + dy + colliderExtents.y;
 
     if (dx < 0.0f) {
-      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(left, bottom), Vector2.left, BOX_CAST_DISTANCE, wallLayerMask);
-      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(left, top), Vector2.left, BOX_CAST_DISTANCE, wallLayerMask);
+      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(left, bottom), Vector2.left, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(left, top), Vector2.left, BOX_CAST_DISTANCE, obstacleLayerMask);
       if (hitBottom.collider != null) {
         dx = 0.0f;
         hitBottom.collider.SendMessage("PushLeft", SendMessageOptions.DontRequireReceiver);
@@ -88,8 +87,8 @@ public class PlayerController : MonoBehaviour {
         hitTop.collider.SendMessage("PushLeft", SendMessageOptions.DontRequireReceiver);
       }
     } else if (dx > 0.0f) {
-      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(right, bottom), Vector2.right, BOX_CAST_DISTANCE, wallLayerMask);
-      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(right, top), Vector2.right, BOX_CAST_DISTANCE, wallLayerMask);
+      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(right, bottom), Vector2.right, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(right, top), Vector2.right, BOX_CAST_DISTANCE, obstacleLayerMask);
       if (hitBottom.collider != null) {
         dx = 0.0f;
         hitBottom.collider.SendMessage("PushRight", SendMessageOptions.DontRequireReceiver);
@@ -100,8 +99,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     if (dy < 0.0f) {
-      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, bottom), Vector2.down, BOX_CAST_DISTANCE, wallLayerMask);
-      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, bottom), Vector2.down, BOX_CAST_DISTANCE, wallLayerMask);
+      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, bottom), Vector2.down, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, bottom), Vector2.down, BOX_CAST_DISTANCE, obstacleLayerMask);
       if (hitLeft.collider != null) {
         dy = 0.0f;
         hitLeft.collider.SendMessage("PushDown", SendMessageOptions.DontRequireReceiver);
@@ -110,8 +109,8 @@ public class PlayerController : MonoBehaviour {
         hitRight.collider.SendMessage("PushDown", SendMessageOptions.DontRequireReceiver);
       }
     } else if (dy > 0.0f) {
-      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, top), Vector2.up, BOX_CAST_DISTANCE, wallLayerMask);
-      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, top), Vector2.up, BOX_CAST_DISTANCE, wallLayerMask);
+      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, top), Vector2.up, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, top), Vector2.up, BOX_CAST_DISTANCE, obstacleLayerMask);
       if (hitLeft.collider != null) {
         dy = 0.0f;
         hitLeft.collider.SendMessage("PushUp", SendMessageOptions.DontRequireReceiver);
