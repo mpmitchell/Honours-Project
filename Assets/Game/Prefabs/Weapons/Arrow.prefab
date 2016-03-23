@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 477976}
   - 212: {fileID: 21263342}
   - 114: {fileID: 11496326}
+  - 114: {fileID: 11476686}
   - 60: {fileID: 6084306}
   - 50: {fileID: 5030138}
   m_Layer: 11
@@ -66,6 +67,21 @@ PolygonCollider2D:
       - {x: -0.3443843, y: -0.48962563}
       - {x: -0.06367505, y: -0.20250744}
       - {x: -0.19559121, y: -0.07059106}
+--- !u!114 &11476686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa47bb292ff34af9bc7960db968676e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 24576
 --- !u!114 &11496326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  spawner: {fileID: 0}
 --- !u!212 &21263342
 SpriteRenderer:
   m_ObjectHideFlags: 1

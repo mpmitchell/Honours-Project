@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class Arrow : MonoBehaviour {
+public class Projectile : MonoBehaviour {
 
   [Range(1, 10)] [SerializeField] int speed;
 
-  [HideInInspector] public Bow bow;
+  [HideInInspector] public ProjectileSpawner spawner;
 
   Vector3 direction;
 
@@ -12,8 +12,8 @@ public class Arrow : MonoBehaviour {
     transform.Translate(direction * speed * Time.deltaTime, Space.World);
   }
 
-  void OnCollisionEnter2D(Collision2D collision) {
-    bow.ReturnArrow(gameObject);
+  void OnTriggerEnter2D(Collider2D collider) {
+    spawner.ReturnProjectile(gameObject);
   }
 
   public void Activate(Vector3 origin, Direction direction) {
