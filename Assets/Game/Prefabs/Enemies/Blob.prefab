@@ -11,8 +11,10 @@ GameObject:
   - 212: {fileID: 21285390}
   - 114: {fileID: 11461260}
   - 114: {fileID: 11411982}
+  - 114: {fileID: 11442442}
   - 60: {fileID: 6092622}
   - 50: {fileID: 5071894}
+  - 95: {fileID: 9538012}
   m_Layer: 13
   m_Name: Blob
   m_TagString: Untagged
@@ -69,6 +71,23 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.5}
       - {x: 0.48608398, y: -0.21313381}
       - {x: 0.25219798, y: -0.12060404}
+--- !u!95 &9538012
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142992}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7847b61355f54928b8029846d79744e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11411982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,6 +103,20 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &11442442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2199a6fecb3624c21bab966e41386944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  jumpingSpeed: 0
+  jumpDistance: 0
 --- !u!114 &11461260
 MonoBehaviour:
   m_ObjectHideFlags: 1
