@@ -16,10 +16,10 @@ TagManager:
   - Wall
   - Sword
   - Player
-  - Player Arrow
-  - Enemy Arrow
-  - 
-  - 
+  - Player Projectile
+  - Enemy Projectile
+  - Enemy
+  - Flying Enemy
   - 
   - 
   - 
@@ -55,6 +55,12 @@ TagManager:
     locked: 0
   - name: Player Weapon
     uniqueID: 215867601
+    locked: 0
+  - name: Enemy Weapons
+    uniqueID: 1037166457
+    locked: 0
+  - name: Enemy
+    uniqueID: 4255744267
     locked: 0
   - name: Player
     uniqueID: 2498377595
