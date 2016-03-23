@@ -6,8 +6,10 @@ public class PlayerController : MonoBehaviour {
   [SerializeField] [Range(1, 10)] int runningSpeed;
   [SerializeField] LayerMask obstacleLayerMask;
 
+  [HideInInspector] public static GameObject player;
+
   const float BOX_CAST_DISTANCE = 0.1f;
-  static Vector2 colliderExtents;
+  Vector2 colliderExtents;
 
   Animator animator;
   bool moving = false;
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     colliderExtents = GetComponent<BoxCollider2D>().bounds.extents;
     animator = GetComponent<Animator>();
     animator.GetBehaviour<PlayerAnimator>().controller = this;
+    player = gameObject;
   }
 
   void Update() {
