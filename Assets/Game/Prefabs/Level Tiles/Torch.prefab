@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 410292}
   - 212: {fileID: 21281280}
   - 61: {fileID: 6137178}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

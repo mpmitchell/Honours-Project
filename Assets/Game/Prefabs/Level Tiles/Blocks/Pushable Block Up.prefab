@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21296792}
   - 61: {fileID: 6185858}
   - 114: {fileID: 11441346}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Pushable Block Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}

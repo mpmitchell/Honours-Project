@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 402340}
   - 212: {fileID: 21299408}
   - 61: {fileID: 6150704}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Armos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
