@@ -7,6 +7,6 @@ public class Explosion : MonoBehaviour {
   }
 
   void OnTriggerEnter2D(Collider2D collider) {
-    collider.SendMessage("Explosion");
+    collider.SendMessage("Explosion", SendMessageOptions.DontRequireReceiver);
   }
 }
