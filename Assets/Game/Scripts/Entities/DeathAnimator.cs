@@ -8,5 +8,5 @@ public class DeathAnimator : StateMachineBehaviour {
     if (stateInfo.IsTag("Dead")) {
       target.SendMessage("Dead");
     }
-	}
+  }
 }
