@@ -2,8 +2,13 @@
 
 public class Entity : MonoBehaviour {
 
-  void Start() {
-     GetComponent<Animator>().GetBehaviour<DeathAnimator>().target = gameObject;
+  [SerializeField] protected LayerMask obstacleLayerMask;
+
+  protected Animator animator;
+
+  void Awake() {
+    animator = GetComponent<Animator>();
+    animator.GetBehaviour<DeathAnimator>().target = gameObject;
   }
 
   protected virtual void Dying() {

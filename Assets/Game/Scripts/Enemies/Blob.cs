@@ -6,14 +6,11 @@ public class Blob : Entity {
   [SerializeField] [Range(1, 10)] int jumpingSpeed;
   [SerializeField] [Range(1, 10)] int jumpDistance;
   [SerializeField] [Range(1, 10)] int jumpCooldown;
-  [SerializeField] LayerMask obstacleLayerMask;
 
-  Animator animator;
   [HideInInspector] public bool jumping = false;
   float jumpCooldownTimer;
 
-  void Awake() {
-    animator = GetComponent<Animator>();
+  void Start() {
     animator.GetBehaviour<BlobAnimator>().controller = this;
   }
 
