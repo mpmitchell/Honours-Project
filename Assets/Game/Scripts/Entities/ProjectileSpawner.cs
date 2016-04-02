@@ -8,7 +8,7 @@ public class ProjectileSpawner : MonoBehaviour {
 
   Stack<GameObject> pool = new Stack<GameObject>();
 
-  void Awake() {
+  void Start() {
     for (int i = 0; i < maxNumberOfProjectiles; i++) {
       GameObject projectile = Instantiate(prefab) as GameObject;
       projectile.GetComponent<Projectile>().spawner = this;
