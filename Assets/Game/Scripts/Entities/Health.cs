@@ -6,7 +6,7 @@ public class Health : MonoBehaviour {
 
   Animator animator;
 
-  void Awake() {
+  void Start() {
     animator = GetComponent<Animator>();
   }
 
