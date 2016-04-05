@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Breakable
+  - Key
+  - Lock
   layers:
   - Default
   - TransparentFX
@@ -22,8 +24,8 @@ TagManager:
   - Enemy
   - Flying Enemy
   - Obstacle
-  - Room Boundary
-  - Door
+  - Doorway
+  - Item
   - 
   - 
   - 
