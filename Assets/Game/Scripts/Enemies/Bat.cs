@@ -5,8 +5,6 @@ public class Bat : Entity {
   [SerializeField] [Range(1, 10)] int speed;
   [SerializeField] [Range(1, 10)] int projectionFactor;
 
-  Vector3 direction;
-
   void Start() {
     direction = Random.insideUnitCircle.normalized;
   }

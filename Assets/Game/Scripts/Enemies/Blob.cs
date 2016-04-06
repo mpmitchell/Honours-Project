@@ -15,7 +15,7 @@ public class Blob : Entity {
   }
 
   void Update() {
-  Vector3 direction = PlayerController.player.transform.position - transform.position;
+    direction = (PlayerController.player.transform.position - transform.position).normalized;
 
     if (!jumping) {
       // Get distance
@@ -30,6 +30,7 @@ public class Blob : Entity {
       } else {
         // Check for obstacles
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction * speed * Time.deltaTime, 1.0f, obstacleLayerMask);
+        Debug.DrawLine(transform.position, transform.position + direction * speed * Time.deltaTime);
 
         if (hit.collider == null) {
           transform.Translate(direction * speed * Time.deltaTime);
@@ -42,7 +43,7 @@ public class Blob : Entity {
       }
     } else {
       // Check for obstacles
-      RaycastHit2D hit = Physics2D.Raycast(transform.position, direction * jumpingSpeed * Time.deltaTime, 1.0f, obstacleLayerMask);
+      RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(direction.x, direction.y) * jumpingSpeed * Time.deltaTime, 1.0f, obstacleLayerMask);
 
       if (hit.collider == null) {
         transform.Translate(direction * jumpingSpeed * Time.deltaTime);
