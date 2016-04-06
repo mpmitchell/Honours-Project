@@ -12,7 +12,6 @@ public class Entity : MonoBehaviour {
   }
 
   void OnEnable() {
-    Debug.Log(gameObject.name + " Enabled");
     animator.GetBehaviour<DeathAnimator>().target = gameObject;
   }
 

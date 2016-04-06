@@ -71,4 +71,13 @@ public class Projectile : MonoBehaviour {
       }
     }
   }
+
+  public void Activate(Vector3 origin, Vector3 direction) {
+    gameObject.SetActive(true);
+    transform.position = origin;
+    distanceTraveled = 0.0f;
+    boomeranged = false;
+
+    this.direction = direction;
+  }
 }

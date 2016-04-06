@@ -25,6 +25,14 @@ public class ProjectileSpawner : MonoBehaviour {
     }
   }
 
+  void FireProjectile(Vector3 direction) {
+    GameObject projectile = GetProjectile();
+
+    if (projectile != null) {
+      projectile.GetComponent<Projectile>().Activate(transform.position, direction);
+    }
+  }
+
   GameObject GetProjectile() {
     if (pool.Count != 0) {
       return pool.Pop();

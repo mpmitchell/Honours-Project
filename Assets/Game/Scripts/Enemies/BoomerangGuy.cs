@@ -47,9 +47,9 @@ public class BoomerangGuy : MovingEntity {
     distance = 0.0f;
 
     if (direction == Direction.Left || direction == Direction.Right) {
-      direction = Random.value > 0.5f ? Direction.Up : Direction.Down;
+      direction = Random.value <= 0.5f ? Direction.Up : Direction.Down;
     } else {
-      direction = Random.value > 0.5f ? Direction.Left : Direction.Right;
+      direction = Random.value <= 0.5f ? Direction.Left : Direction.Right;
     }
 
     UpdateDirection();
