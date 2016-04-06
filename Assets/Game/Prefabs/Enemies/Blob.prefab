@@ -12,7 +12,8 @@ GameObject:
   - 114: {fileID: 11461260}
   - 114: {fileID: 11411982}
   - 114: {fileID: 11442442}
-  - 60: {fileID: 6092622}
+  - 114: {fileID: 11414714}
+  - 61: {fileID: 6184908}
   - 50: {fileID: 5071894}
   - 95: {fileID: 9538012}
   m_Layer: 13
@@ -51,8 +52,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6092622
-PolygonCollider2D:
+--- !u!61 &6184908
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -62,15 +63,9 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: -0.27050924, y: -0.12060404}
-      - {x: -0.48608398, y: -0.25488138}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.48608398, y: -0.21313381}
-      - {x: 0.25219798, y: -0.12060404}
+  m_Offset: {x: 0, y: -0.31319332}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.37472177}
 --- !u!95 &9538012
 Animator:
   serializedVersion: 3
@@ -104,6 +99,18 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &11414714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67ea5abc4c3e472594ec4143a3e17d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  room: {fileID: 0}
 --- !u!114 &11442442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,13 +122,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2199a6fecb3624c21bab966e41386944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  jumpingSpeed: 2
-  jumpDistance: 2
-  jumpCooldown: 2
   obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 98560
+    m_Bits: 360704
+  speed: 1
+  jumpingSpeed: 3
+  jumpDistance: 4
+  jumpCooldown: 2
   jumping: 0
 --- !u!114 &11461260
 MonoBehaviour:

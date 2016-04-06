@@ -10,8 +10,10 @@ GameObject:
   - 4: {fileID: 490040}
   - 212: {fileID: 21233806}
   - 114: {fileID: 11416652}
+  - 114: {fileID: 11473652}
   - 114: {fileID: 11407450}
   - 114: {fileID: 11449852}
+  - 114: {fileID: 11453858}
   - 61: {fileID: 6119280}
   - 50: {fileID: 5095212}
   - 95: {fileID: 9538276}
@@ -74,7 +76,7 @@ Animator:
   m_GameObject: {fileID: 145546}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ca16e583235ca4fbabbb2500279945bc, type: 2}
+  m_Controller: {fileID: 22100000, guid: 2674a2245fac64200b4ffba267ac9ed5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -94,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  canBreak: 0
   targetLayers:
     serializedVersion: 2
     m_Bits: 1024
@@ -108,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a2123728a9440fdb2864174c06fdf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 2
 --- !u!114 &11449852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,11 +125,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 33024
+    m_Bits: 360704
   speed: 2
-  dx: 0
-  dy: 0
-  distance: 0
+  changeChance: 5
+--- !u!114 &11453858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67ea5abc4c3e472594ec4143a3e17d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  room: {fileID: 0}
+--- !u!114 &11473652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393d6a058c31548ff9d0a8f22439dfad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21233806
 SpriteRenderer:
   m_ObjectHideFlags: 1
