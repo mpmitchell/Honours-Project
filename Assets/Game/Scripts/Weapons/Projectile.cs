@@ -2,23 +2,48 @@
 
 public class Projectile : MonoBehaviour {
 
-  [Range(1, 10)] [SerializeField] int speed;
+  [SerializeField] [Range(1, 10)] int speed;
+  [SerializeField] bool boomerang;
+  [SerializeField] [Range(1, 10)] int distance;
 
   [HideInInspector] public ProjectileSpawner spawner;
 
   Vector3 direction;
 
+  float distanceTraveled = 0.0f;
+  bool boomeranged = false;
+
   void Update() {
-    transform.Translate(direction * speed * Time.deltaTime, Space.World);
+    distanceTraveled += speed * Time.deltaTime;
+
+    if (boomerang && distanceTraveled >= distance) {
+      if (!boomeranged) {
+        direction = -direction;
+        distanceTraveled = 0.0f;
+        boomeranged = true;
+      } else {
+        spawner.ReturnProjectile(gameObject);
+      }
+    } else {
+      transform.Translate(direction * speed * Time.deltaTime, Space.World);
+    }
   }
 
   void OnTriggerEnter2D(Collider2D collider) {
-    spawner.ReturnProjectile(gameObject);
+    if (boomerang && !boomeranged) {
+      direction = -direction;
+      distanceTraveled = distance - distanceTraveled;
+      boomeranged = true;
+    } else {
+      spawner.ReturnProjectile(gameObject);
+    }
   }
 
   public void Activate(Vector3 origin, Direction direction) {
     gameObject.SetActive(true);
     transform.position = origin;
+    distanceTraveled = 0.0f;
+    boomeranged = false;
 
     switch (direction) {
       case Direction.Left: {

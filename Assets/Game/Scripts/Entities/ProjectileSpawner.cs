@@ -12,7 +12,7 @@ public class ProjectileSpawner : MonoBehaviour {
     for (int i = 0; i < maxNumberOfProjectiles; i++) {
       GameObject projectile = Instantiate(prefab) as GameObject;
       projectile.GetComponent<Projectile>().spawner = this;
-      ReturnProjectile(projectile);
+      projectile.SetActive(false);
       pool.Push(projectile);
     }
   }
@@ -36,5 +36,6 @@ public class ProjectileSpawner : MonoBehaviour {
   public void ReturnProjectile(GameObject arrow) {
     arrow.SetActive(false);
     pool.Push(arrow);
+    SendMessage("ProjectileReturned", SendMessageOptions.DontRequireReceiver);
   }
 }
