@@ -56,6 +56,8 @@ public class PlayerController : MovingEntity {
     if (collider.gameObject.tag == "Key") {
       keyCount++;
       Destroy(collider.gameObject);
+    } else if (collider.gameObject.tag == "Crown") {
+      // Game Over
     }
   }
 
