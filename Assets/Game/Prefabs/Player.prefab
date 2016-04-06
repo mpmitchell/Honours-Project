@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  invincibilityFrames: 0
 --- !u!114 &11481802
 MonoBehaviour:
   m_ObjectHideFlags: 1

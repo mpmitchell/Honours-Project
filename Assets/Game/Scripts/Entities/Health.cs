@@ -3,7 +3,6 @@
 public class Health : MonoBehaviour {
 
   [SerializeField] [Range(1, 10)] int health;
-  [SerializeField] [Range(1, 10)] int invincibilityFrames;
 
   Animator animator;
   bool invincible;
