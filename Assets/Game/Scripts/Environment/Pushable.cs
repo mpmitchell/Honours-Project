@@ -8,6 +8,8 @@ public class Pushable : MonoBehaviour {
   [SerializeField] [Range(1, 13)] int maxDistance;
   [SerializeField] [Range(1, 10)] int drag;
 
+  [SerializeField] GameObject gateContainer;
+
   float distancePushed = 0.0f;
   bool pushed = false;
 
@@ -18,6 +20,7 @@ public class Pushable : MonoBehaviour {
 
       if (onlyOnce && distancePushed >= maxDistance) {
         pushed = true;
+        gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
       }
 
       transform.Translate(Vector3.left * translation);
@@ -31,6 +34,7 @@ public class Pushable : MonoBehaviour {
 
       if (onlyOnce && distancePushed >= maxDistance) {
         pushed = true;
+        gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
       }
 
       transform.Translate(Vector3.right * translation);
@@ -44,6 +48,7 @@ public class Pushable : MonoBehaviour {
 
       if (onlyOnce && distancePushed >= maxDistance) {
         pushed = true;
+        gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
       }
 
       transform.Translate(Vector3.down * translation);
@@ -57,6 +62,7 @@ public class Pushable : MonoBehaviour {
 
       if (onlyOnce && distancePushed >= maxDistance) {
         pushed = true;
+        gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
       }
 
       transform.Translate(Vector3.up * translation);

@@ -3,7 +3,7 @@
 public class MovingEntity : Entity {
 
   protected bool moving = false;
-  new protected Direction direction = Direction.Down;
+  protected Direction direction = Direction.Down;
 
   Vector2 colliderExtents;
 
