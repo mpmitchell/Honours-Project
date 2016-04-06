@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11437856}
   - 61: {fileID: 6148910}
   - 50: {fileID: 5085270}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: Spiked Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,12 +76,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 33024
-  directions: 0
-  speed: 2
-  playerLayerMask:
+    m_Bits: 360704
+  directions: -1
+  speed: 5
+  triggerLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 34048
 --- !u!114 &11459540
 MonoBehaviour:
   m_ObjectHideFlags: 1
