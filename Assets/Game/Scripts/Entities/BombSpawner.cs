@@ -12,7 +12,7 @@ public class BombSpawner : MonoBehaviour {
     for (int i = 0; i < maxNumberOfBombs; i++) {
       GameObject bomb = Instantiate(prefab) as GameObject;
       bomb.GetComponent<Bomb>().spawner = this;
-      ReturnBomb(bomb);
+      bomb.SetActive(false);
       pool.Push(bomb);
     }
   }
