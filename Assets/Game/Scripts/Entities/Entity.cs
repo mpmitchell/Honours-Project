@@ -5,7 +5,7 @@ public class Entity : MonoBehaviour {
   [SerializeField] protected LayerMask obstacleLayerMask;
 
   protected Animator animator;
-  protected Vector3 direction;
+  protected Vector3 directionVector;
 
   void Awake() {
     animator = GetComponent<Animator>();
@@ -13,7 +13,7 @@ public class Entity : MonoBehaviour {
   }
 
   public virtual Vector3 GetDirectionVector() {
-    return direction;
+    return directionVector;
   }
 
   protected virtual void Dying() {
