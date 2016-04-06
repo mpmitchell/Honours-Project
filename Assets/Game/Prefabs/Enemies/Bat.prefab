@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11492804}
   - 114: {fileID: 11419086}
   - 114: {fileID: 11404356}
+  - 114: {fileID: 11448500}
   - 60: {fileID: 6009718}
   - 50: {fileID: 5077690}
   - 95: {fileID: 9565718}
@@ -105,11 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3e764ea40464fd3947ade90a8dead5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  wallLayerMask:
+  obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 256
-  boxCastDistance: 0.1
+    m_Bits: 327936
   speed: 5
   projectionFactor: 6
 --- !u!114 &11419086
@@ -128,6 +127,18 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &11448500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67ea5abc4c3e472594ec4143a3e17d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  room: {fileID: 0}
 --- !u!114 &11492804
 MonoBehaviour:
   m_ObjectHideFlags: 1
