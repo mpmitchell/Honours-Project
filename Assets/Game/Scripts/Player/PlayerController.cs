@@ -3,11 +3,12 @@
 public class PlayerController : MovingEntity {
 
   [SerializeField] [Range(1, 10)] int speed;
-  [SerializeField] [Range(1, 10)] int runningSpeed;
 
   [HideInInspector] public static GameObject player;
 
   [HideInInspector] public bool attacking = false;
+
+  int keyCount = 0;
 
   void Start() {
     animator.GetBehaviour<PlayerAnimator>().controller = this;
@@ -32,6 +33,11 @@ public class PlayerController : MovingEntity {
       CollisionCheck(ref dx, ref dy);
       SetMoving(dx, dy);
 
+      if (hit && hit.tag == "Lock" && keyCount > 0) {
+        keyCount--;
+        hit.SendMessage("Open");
+      }
+
       transform.Translate(new Vector3(dx, dy, 0.0f));
 
       if (Input.GetButtonDown("Attack")) {
@@ -47,6 +53,13 @@ public class PlayerController : MovingEntity {
       if (Input.GetButtonDown("Drop Bomb")) {
         SendMessage("DropBomb");
       }
+    }
+  }
+
+  void OnTriggerEnter2D(Collider2D collider) {
+    if (collider.gameObject.tag == "Key") {
+      keyCount++;
+      Destroy(collider.gameObject);
     }
   }
 
