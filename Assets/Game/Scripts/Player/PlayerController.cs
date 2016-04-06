@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MovingEntity {
 
@@ -56,10 +57,12 @@ public class PlayerController : MovingEntity {
     if (collider.gameObject.tag == "Key") {
       keyCount++;
       Destroy(collider.gameObject);
+    } else if (collider.gameObject.tag == "Crown") {
+      SceneManager.LoadScene(1);
     }
   }
 
   protected override void Dead() {
-    // Game Over
+    SceneManager.LoadScene(2);
   }
 }
