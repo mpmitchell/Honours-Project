@@ -10,7 +10,6 @@ public class MovingEntity : Entity {
 
   void Awake() {
     animator = GetComponent<Animator>();
-    animator.GetBehaviour<DeathAnimator>().target = gameObject;
     colliderExtents = GetComponent<BoxCollider2D>().bounds.extents;
   }
 

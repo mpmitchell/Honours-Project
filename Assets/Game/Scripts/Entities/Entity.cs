@@ -9,6 +9,10 @@ public class Entity : MonoBehaviour {
 
   void Awake() {
     animator = GetComponent<Animator>();
+  }
+
+  void OnEnable() {
+    Debug.Log(gameObject.name + " Enabled");
     animator.GetBehaviour<DeathAnimator>().target = gameObject;
   }
 

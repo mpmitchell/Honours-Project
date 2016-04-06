@@ -19,6 +19,10 @@ public class SpikedBlock : MovingEntity {
     initialPosition = transform.position;
   }
 
+  void OnEnable() {
+    // Override Entity.OnEnabled();
+  }
+
   void Update() {
     switch (state) {
       case State.Idle: {
