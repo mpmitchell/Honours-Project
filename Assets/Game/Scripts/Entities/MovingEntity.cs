@@ -2,7 +2,6 @@
 
 public class MovingEntity : Entity {
 
-  protected bool moving = false;
   protected Direction direction = Direction.Down;
   protected Vector2 colliderExtents;
 
@@ -185,15 +184,9 @@ public class MovingEntity : Entity {
 
   protected void SetMoving(float dx, float dy) {
     if (dx == 0.0f && dy == 0.0f) {
-      if (moving) {
         animator.SetTrigger("StoppedMoving");
-        moving = false;
-      }
     } else {
-      if (!moving) {
         animator.SetTrigger("StartedMoving");
-        moving = true;
-      }
     }
   }
 }

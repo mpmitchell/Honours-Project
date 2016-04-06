@@ -40,7 +40,6 @@ public class PlayerController : MovingEntity {
       if (Input.GetButtonDown("Attack")) {
         animator.SetTrigger("Attack");
         attacking = true;
-        moving = false;
       }
 
       if (Input.GetButtonDown("Fire Arrow")) {
