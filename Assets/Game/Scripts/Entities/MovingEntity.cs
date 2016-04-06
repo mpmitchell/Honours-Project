@@ -4,8 +4,7 @@ public class MovingEntity : Entity {
 
   protected bool moving = false;
   protected Direction direction = Direction.Down;
-
-  Vector2 colliderExtents;
+  protected Vector2 colliderExtents;
 
   const float BOX_CAST_DISTANCE = 0.1f;
 
