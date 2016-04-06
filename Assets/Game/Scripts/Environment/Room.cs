@@ -15,7 +15,6 @@ public class Room : MonoBehaviour {
       enemy.GetComponent<Enemy>().room = this;
     }
 
-    gateContainer.SetActive(false);
     rewardContainer.SetActive(false);
 
     if (startingRoom) {
@@ -42,9 +41,7 @@ public class Room : MonoBehaviour {
     if (enemyContainer.transform.childCount == 1) {
       rewardContainer.SetActive(true);
 
-      foreach (Transform gate in gateContainer.transform) {
-        Destroy(gate.gameObject);
-      }
+      gateContainer.BroadcastMessage("RoomClear", SendMessageOptions.DontRequireReceiver);
     }
   }
 }
