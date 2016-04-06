@@ -20,7 +20,9 @@ public class Pushable : MonoBehaviour {
 
       if (onlyOnce && distancePushed >= maxDistance) {
         pushed = true;
-        gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
+        if (gateContainer) {
+          gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
+        }
       }
 
       transform.Translate(Vector3.left * translation);
@@ -34,7 +36,9 @@ public class Pushable : MonoBehaviour {
 
       if (onlyOnce && distancePushed >= maxDistance) {
         pushed = true;
-        gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
+        if (gateContainer) {
+          gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
+        }
       }
 
       transform.Translate(Vector3.right * translation);
@@ -48,7 +52,9 @@ public class Pushable : MonoBehaviour {
 
       if (onlyOnce && distancePushed >= maxDistance) {
         pushed = true;
-        gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
+        if (gateContainer) {
+          gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
+        }
       }
 
       transform.Translate(Vector3.down * translation);
@@ -62,7 +68,9 @@ public class Pushable : MonoBehaviour {
 
       if (onlyOnce && distancePushed >= maxDistance) {
         pushed = true;
-        gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
+        if (gateContainer) {
+          gateContainer.BroadcastMessage("Open", SendMessageOptions.DontRequireReceiver);
+        }
       }
 
       transform.Translate(Vector3.up * translation);
