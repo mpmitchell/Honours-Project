@@ -18,18 +18,14 @@ public class PlayerController : MovingEntity {
     if (!attacking) {
       float dx = Input.GetAxis("Horizontal");
       float dy = Input.GetAxis("Vertical");
-      bool running = Input.GetButton("Run");
 
-      if (running) {
-        dx *= runningSpeed * Time.deltaTime;
-        dy *= runningSpeed * Time.deltaTime;
-      } else {
-        dx *= speed * Time.deltaTime;
-        dy *= speed * Time.deltaTime;
-      }
+      dx *= speed * Time.deltaTime;
+      dy *= speed * Time.deltaTime;
+
+      GameObject hit;
 
       SetDirection(dx, dy);
-      CollisionCheck(ref dx, ref dy);
+      CollisionCheck(ref dx, ref dy, out hit);
       SetMoving(dx, dy);
 
       transform.Translate(new Vector3(dx, dy, 0.0f));
