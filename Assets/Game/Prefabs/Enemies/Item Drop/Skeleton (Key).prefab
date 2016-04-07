@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 360704
+    m_Bits: 360720
   speed: 2
   changeChance: 5
 --- !u!212 &21274900
