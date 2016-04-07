@@ -59,6 +59,7 @@ MonoBehaviour:
   onlyOnce: 1
   maxDistance: 1
   drag: 4
+  gateContainer: {fileID: 0}
 --- !u!212 &21206210
 SpriteRenderer:
   m_ObjectHideFlags: 1
