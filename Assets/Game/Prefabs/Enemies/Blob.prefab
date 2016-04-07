@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 98560
+    m_Bits: 98576
   speed: 1
   jumpingSpeed: 3
   jumpDistance: 4
@@ -142,7 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  invincibilityFrames: 0
 --- !u!212 &21285390
 SpriteRenderer:
   m_ObjectHideFlags: 1

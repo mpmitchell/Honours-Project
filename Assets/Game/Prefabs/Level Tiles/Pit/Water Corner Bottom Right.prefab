@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 414256}
   - 212: {fileID: 21283206}
   - 61: {fileID: 6134960}
-  m_Layer: 15
+  m_Layer: 4
   m_Name: Water Corner Bottom Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}

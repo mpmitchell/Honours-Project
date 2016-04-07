@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  invincibilityFrames: 0
 --- !u!114 &11447248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 98560
+    m_Bits: 98576
   speed: 2
   changeChance: 10
   fireChance: 5
