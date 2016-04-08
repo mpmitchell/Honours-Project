@@ -59,21 +59,16 @@ public class PlayerController : MovingEntity {
     }
   }
 
-  void OnTriggerEnter2D(Collider2D collider) {
-    if (collider.gameObject.tag == "Key") {
-      keyCount++;
-      Destroy(collider.gameObject);
-      Camera.main.SendMessage("CollectKey");
-    } else if (collider.gameObject.tag == "Crown") {
-      SceneManager.LoadScene(1);
-    }
-  }
-
   void Damage(int damage) {
     Camera.main.SendMessage("Damage", damage);
   }
 
   protected override void Dead() {
     SceneManager.LoadScene(2);
+  }
+
+  public void AddKey() {
+    keyCount++;
+    Camera.main.SendMessage("CollectKey");
   }
 }
