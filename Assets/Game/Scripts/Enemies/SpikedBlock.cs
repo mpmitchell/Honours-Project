@@ -20,7 +20,7 @@ public class SpikedBlock : MovingEntity {
   }
 
   void OnEnable() {
-    // Override Entity.OnEnabled();
+    // Override Entity.OnEnable();
   }
 
   void Update() {

@@ -10,8 +10,9 @@ public class Blob : Entity {
   [HideInInspector] public bool jumping = false;
   float jumpCooldownTimer;
 
-  void Start() {
+  void OnEnable() {
     animator.GetBehaviour<BlobAnimator>().controller = this;
+    animator.GetBehaviour<DeathAnimator>().target = gameObject;
   }
 
   void Update() {
