@@ -11,6 +11,9 @@ public class Room : MonoBehaviour {
 
   public static Room currentRoom = null;
 
+  static LinkedList<Room> rooms = new LinkedList<Room>();
+  static Color defaultColour = Color.black;
+
   void Awake() {
     foreach (Transform enemy in enemyContainer.transform) {
       enemy.GetComponent<Enemy>().room = this;
@@ -24,6 +27,8 @@ public class Room : MonoBehaviour {
     } else {
       Exit();
     }
+
+    rooms.AddLast(this);
   }
 
   public void Enter() {
@@ -34,7 +39,7 @@ public class Room : MonoBehaviour {
   public void Exit() {
     enemyContainer.SetActive(false);
     gateContainer.SetActive(false);
-    mapUI.color = Color.white;
+    mapUI.color = defaultColour;
   }
 
   public void LockGates() {
@@ -47,5 +52,15 @@ public class Room : MonoBehaviour {
 
       gateContainer.BroadcastMessage("RoomClear", SendMessageOptions.DontRequireReceiver);
     }
+  }
+
+  public static void GotMap() {
+    defaultColour = Color.white;
+
+    foreach (Room room in rooms) {
+      room.mapUI.color = defaultColour;
+    }
+
+    currentRoom.mapUI.color = Color.green;
   }
 }
