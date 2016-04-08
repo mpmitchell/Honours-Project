@@ -7202,6 +7202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingRoom: 0
+  goalRoom: 0
   mapUI: {fileID: 21291354}
   enemyContainer: {fileID: 164112}
   gateContainer: {fileID: 171512}
@@ -12879,7 +12880,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 333fe347569b04ff39264aa45435c4a8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &21291608

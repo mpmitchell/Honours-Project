@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Room : MonoBehaviour {
 
   [SerializeField] bool startingRoom;
+  [SerializeField] bool goalRoom;
   [SerializeField] SpriteRenderer mapUI;
   [SerializeField] GameObject enemyContainer;
   [SerializeField] GameObject gateContainer;
@@ -13,6 +14,7 @@ public class Room : MonoBehaviour {
 
   static LinkedList<Room> rooms = new LinkedList<Room>();
   static Color defaultColour = Color.black;
+  static bool highlightGoal = false;
 
   void Awake() {
     foreach (Transform enemy in enemyContainer.transform) {
@@ -39,7 +41,12 @@ public class Room : MonoBehaviour {
   public void Exit() {
     enemyContainer.SetActive(false);
     gateContainer.SetActive(false);
-    mapUI.color = defaultColour;
+
+    if (goalRoom && highlightGoal) {
+      mapUI.color = Color.red;
+    } else {
+      mapUI.color = defaultColour;
+    }
   }
 
   public void LockGates() {
@@ -58,9 +65,20 @@ public class Room : MonoBehaviour {
     defaultColour = Color.white;
 
     foreach (Room room in rooms) {
-      room.mapUI.color = defaultColour;
+      if (!room.goalRoom) {
+        room.mapUI.color = defaultColour;
+      }
     }
 
     currentRoom.mapUI.color = Color.green;
+  }
+
+  public static void GotCompass() {
+    foreach (Room room in rooms) {
+      if (room.goalRoom) {
+        room.mapUI.color = Color.red;
+        break;
+      }
+    }
   }
 }
