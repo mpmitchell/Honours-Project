@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Room : MonoBehaviour {
 
   [SerializeField] bool startingRoom;
+  [SerializeField] SpriteRenderer mapUI;
   [SerializeField] GameObject enemyContainer;
   [SerializeField] GameObject gateContainer;
   [SerializeField] GameObject rewardContainer;
@@ -19,6 +20,7 @@ public class Room : MonoBehaviour {
 
     if (startingRoom) {
       currentRoom = this;
+      mapUI.color = Color.green;
     } else {
       Exit();
     }
@@ -26,11 +28,13 @@ public class Room : MonoBehaviour {
 
   public void Enter() {
     enemyContainer.SetActive(true);
+    mapUI.color = Color.green;
   }
 
   public void Exit() {
     enemyContainer.SetActive(false);
     gateContainer.SetActive(false);
+    mapUI.color = Color.white;
   }
 
   public void LockGates() {
