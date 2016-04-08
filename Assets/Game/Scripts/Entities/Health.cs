@@ -26,4 +26,8 @@ public class Health : MonoBehaviour {
   void Recover() {
     invincible = false;
   }
+
+  public int getHealth() {
+    return health;
+  }
 }
