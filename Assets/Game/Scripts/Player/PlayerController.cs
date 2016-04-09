@@ -11,6 +11,8 @@ public class PlayerController : MovingEntity {
   [HideInInspector] public bool attacking = false;
 
   int keyCount = 0;
+  bool hasBow = false;
+  int bombCount = 5;
 
   void Start() {
     if (instance) {
@@ -49,12 +51,13 @@ public class PlayerController : MovingEntity {
         attacking = true;
       }
 
-      if (Input.GetButtonDown("Fire Arrow")) {
+      if (Input.GetButtonDown("Fire Arrow") && hasBow) {
         SendMessage("FireProjectile", direction);
       }
 
-      if (Input.GetButtonDown("Drop Bomb")) {
+      if (Input.GetButtonDown("Drop Bomb") && bombCount > 0) {
         SendMessage("DropBomb");
+        bombCount--;
       }
     }
   }
@@ -70,5 +73,9 @@ public class PlayerController : MovingEntity {
   public void AddKey() {
     keyCount++;
     Camera.main.SendMessage("CollectKey");
+  }
+
+  public void GetBow() {
+    hasBow = true;
   }
 }
