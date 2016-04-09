@@ -8,6 +8,7 @@ public class GameGUI : MonoBehaviour {
   [SerializeField] GameObject heartPrefab;
   [SerializeField] Sprite emptyHeartSprite;
   [SerializeField] Text keyText;
+  [SerializeField] Text bombText;
 
   Stack<Image> health = new Stack<Image>();
 
@@ -45,5 +46,13 @@ public class GameGUI : MonoBehaviour {
 
   void UseKey() {
     keyText.text = (int.Parse(keyText.text) - 1).ToString();
+  }
+
+  void BombCount(int count) {
+    bombText.text = count.ToString();
+  }
+
+  void DropBomb() {
+    bombText.text = (int.Parse(bombText.text) - 1).ToString();
   }
 }

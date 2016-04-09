@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MovingEntity {
 
   [SerializeField] [Range(1, 10)] int speed;
+  [SerializeField] [Range(1, 10)] int bombCount = 5;
 
   [HideInInspector] public static PlayerController instance = null;
   [HideInInspector] public static GameObject player = null;
@@ -12,7 +13,6 @@ public class PlayerController : MovingEntity {
 
   int keyCount = 0;
   bool hasBow = false;
-  int bombCount = 5;
 
   void Start() {
     if (instance) {
@@ -22,6 +22,8 @@ public class PlayerController : MovingEntity {
     animator.GetBehaviour<PlayerAnimator>().controller = this;
     player = gameObject;
     instance = this;
+
+    Camera.main.SendMessage("BombCount", bombCount);
   }
 
   void Update() {
@@ -58,6 +60,7 @@ public class PlayerController : MovingEntity {
       if (Input.GetButtonDown("Drop Bomb") && bombCount > 0) {
         SendMessage("DropBomb");
         bombCount--;
+        Camera.main.SendMessage("DropBomb");
       }
     }
   }
