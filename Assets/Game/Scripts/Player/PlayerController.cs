@@ -74,7 +74,7 @@ public class PlayerController : MovingEntity {
   }
 
   protected override void Dead() {
-    SceneManager.LoadScene(2);
+    SceneManager.LoadScene(4);
   }
 
   public void AddKey() {

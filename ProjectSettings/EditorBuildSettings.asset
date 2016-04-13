@@ -6,6 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Game/Scenes/Menu.unity
+  - enabled: 1
+    path: Assets/Game/Scenes/Generator.unity
+  - enabled: 1
     path: Assets/Game/Scenes/Zelda Level 1.unity
   - enabled: 1
     path: Assets/Game/Scenes/Game Over Win.unity
