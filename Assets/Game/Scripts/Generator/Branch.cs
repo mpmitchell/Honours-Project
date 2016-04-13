@@ -3,7 +3,7 @@
 public class Branch {
 
   public static Branch goalBranch = null;
-  private static int branchNumber = 0;
+  public static int branchNumber = 0;
 
   public LinkedList<Node> nodes = new LinkedList<Node>();
   public Branch parent = null;
