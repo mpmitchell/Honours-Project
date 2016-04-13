@@ -1,3 +1,4 @@
 public enum Type {
-  Level, CriticalPath, Entrance, Room, EmptyRoom, LinearChain, Hook, Item, Lock, Key, Boss, Goal
+  Entrance, Room, CriticalRoom, Lock, Key, Item, BonusItem, Boss, Goal,
+  Level, CriticalPath, Hook, ItemPath, KeyPath
 }

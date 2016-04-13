@@ -5,7 +5,7 @@ public class MovingEntity : Entity {
   protected Direction direction = Direction.Down;
   protected Vector2 colliderExtents;
 
-  const float BOX_CAST_DISTANCE = 0.1f;
+  const float RAYCAST_DISTANCE = 0.1f;
 
   void Awake() {
     animator = GetComponent<Animator>();
@@ -65,8 +65,8 @@ public class MovingEntity : Entity {
     bool hit = false;
 
     if (dx < 0.0f) {
-      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(left, bottom), Vector2.left, BOX_CAST_DISTANCE, obstacleLayerMask);
-      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(left, top), Vector2.left, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(left, bottom), Vector2.left, RAYCAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(left, top), Vector2.left, RAYCAST_DISTANCE, obstacleLayerMask);
       if (hitBottom.collider != null) {
         dx = 0.0f;
         hitBottom.collider.SendMessage("PushLeft", SendMessageOptions.DontRequireReceiver);
@@ -77,8 +77,8 @@ public class MovingEntity : Entity {
         hit = true;
       }
     } else if (dx > 0.0f) {
-      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(right, bottom), Vector2.right, BOX_CAST_DISTANCE, obstacleLayerMask);
-      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(right, top), Vector2.right, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(right, bottom), Vector2.right, RAYCAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(right, top), Vector2.right, RAYCAST_DISTANCE, obstacleLayerMask);
       if (hitBottom.collider != null) {
         dx = 0.0f;
         hitBottom.collider.SendMessage("PushRight", SendMessageOptions.DontRequireReceiver);
@@ -91,8 +91,8 @@ public class MovingEntity : Entity {
     }
 
     if (dy < 0.0f) {
-      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, bottom), Vector2.down, BOX_CAST_DISTANCE, obstacleLayerMask);
-      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, bottom), Vector2.down, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, bottom), Vector2.down, RAYCAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, bottom), Vector2.down, RAYCAST_DISTANCE, obstacleLayerMask);
       if (hitLeft.collider != null) {
         dy = 0.0f;
         hitLeft.collider.SendMessage("PushDown", SendMessageOptions.DontRequireReceiver);
@@ -103,8 +103,8 @@ public class MovingEntity : Entity {
         hit = true;
       }
     } else if (dy > 0.0f) {
-      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, top), Vector2.up, BOX_CAST_DISTANCE, obstacleLayerMask);
-      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, top), Vector2.up, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, top), Vector2.up, RAYCAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, top), Vector2.up, RAYCAST_DISTANCE, obstacleLayerMask);
       if (hitLeft.collider != null) {
         dy = 0.0f;
         hitLeft.collider.SendMessage("PushUp", SendMessageOptions.DontRequireReceiver);
@@ -128,8 +128,8 @@ public class MovingEntity : Entity {
     hit = null;
 
     if (dx < 0.0f) {
-      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(left, bottom), Vector2.left, BOX_CAST_DISTANCE, obstacleLayerMask);
-      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(left, top), Vector2.left, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(left, bottom), Vector2.left, RAYCAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(left, top), Vector2.left, RAYCAST_DISTANCE, obstacleLayerMask);
       if (hitBottom.collider != null) {
         dx = 0.0f;
         hitBottom.collider.SendMessage("PushLeft", SendMessageOptions.DontRequireReceiver);
@@ -140,8 +140,8 @@ public class MovingEntity : Entity {
         hit = hitTop.collider.gameObject;
       }
     } else if (dx > 0.0f) {
-      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(right, bottom), Vector2.right, BOX_CAST_DISTANCE, obstacleLayerMask);
-      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(right, top), Vector2.right, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitBottom = Physics2D.Raycast(new Vector2(right, bottom), Vector2.right, RAYCAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitTop = Physics2D.Raycast(new Vector2(right, top), Vector2.right, RAYCAST_DISTANCE, obstacleLayerMask);
       if (hitBottom.collider != null) {
         dx = 0.0f;
         hitBottom.collider.SendMessage("PushRight", SendMessageOptions.DontRequireReceiver);
@@ -154,8 +154,8 @@ public class MovingEntity : Entity {
     }
 
     if (dy < 0.0f) {
-      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, bottom), Vector2.down, BOX_CAST_DISTANCE, obstacleLayerMask);
-      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, bottom), Vector2.down, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, bottom), Vector2.down, RAYCAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, bottom), Vector2.down, RAYCAST_DISTANCE, obstacleLayerMask);
       if (hitLeft.collider != null) {
         dy = 0.0f;
         hitLeft.collider.SendMessage("PushDown", SendMessageOptions.DontRequireReceiver);
@@ -166,8 +166,8 @@ public class MovingEntity : Entity {
         hit = hitRight.collider.gameObject;
       }
     } else if (dy > 0.0f) {
-      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, top), Vector2.up, BOX_CAST_DISTANCE, obstacleLayerMask);
-      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, top), Vector2.up, BOX_CAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitLeft = Physics2D.Raycast(new Vector2(left, top), Vector2.up, RAYCAST_DISTANCE, obstacleLayerMask);
+      RaycastHit2D hitRight = Physics2D.Raycast(new Vector2(right, top), Vector2.up, RAYCAST_DISTANCE, obstacleLayerMask);
       if (hitLeft.collider != null) {
         dy = 0.0f;
         hitLeft.collider.SendMessage("PushUp", SendMessageOptions.DontRequireReceiver);

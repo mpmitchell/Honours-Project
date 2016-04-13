@@ -13,7 +13,6 @@ public class Entity : MonoBehaviour {
 
   void OnEnable() {
     animator.GetBehaviour<DeathAnimator>().target = gameObject;
-    animator.GetBehaviour<DamageAnimator>().target = gameObject;
   }
 
   public virtual Vector3 GetDirectionVector() {

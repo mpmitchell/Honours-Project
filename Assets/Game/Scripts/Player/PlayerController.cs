@@ -13,12 +13,14 @@ public class PlayerController : MovingEntity {
 
   int keyCount = 0;
   bool hasBow = false;
+  Health health;
 
   void Start() {
     if (instance) {
       Debug.LogError("Player already exists");
     }
 
+    health = GetComponent<Health>();
     animator.GetBehaviour<PlayerAnimator>().controller = this;
     player = gameObject;
     instance = this;
@@ -66,7 +68,9 @@ public class PlayerController : MovingEntity {
   }
 
   void Damage(int damage) {
-    Camera.main.SendMessage("Damage", damage);
+    if (!health.IsInvincible()) {
+      Camera.main.SendMessage("Damage", damage);
+    }
   }
 
   protected override void Dead() {

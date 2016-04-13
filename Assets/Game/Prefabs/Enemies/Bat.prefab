@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67ea5abc4c3e472594ec4143a3e17d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  challengeRating: 20
   room: {fileID: 0}
 --- !u!114 &11492804
 MonoBehaviour:

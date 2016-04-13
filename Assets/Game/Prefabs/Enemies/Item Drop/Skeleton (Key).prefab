@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 473828}
   - 212: {fileID: 21274900}
   - 114: {fileID: 11419798}
-  - 114: {fileID: 11463050}
   - 114: {fileID: 11453486}
   - 114: {fileID: 11472596}
   - 114: {fileID: 11463220}
@@ -126,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  invincibilityFrames: 0.1
 --- !u!114 &11453486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,17 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 167474, guid: d2c7bd288d4f94714b6a7b9249641c6b, type: 2}
---- !u!114 &11463050
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393d6a058c31548ff9d0a8f22439dfad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11463220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67ea5abc4c3e472594ec4143a3e17d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  challengeRating: 0
   room: {fileID: 0}
 --- !u!114 &11472596
 MonoBehaviour:

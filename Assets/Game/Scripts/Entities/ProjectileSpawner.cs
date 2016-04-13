@@ -7,6 +7,7 @@ public class ProjectileSpawner : MonoBehaviour {
   [SerializeField] [Range(1, 10)] int maxNumberOfProjectiles;
 
   Stack<GameObject> pool = new Stack<GameObject>();
+  LinkedList<GameObject> projectiles = new LinkedList<GameObject>();
 
   void Start() {
     for (int i = 0; i < maxNumberOfProjectiles; i++) {
@@ -14,6 +15,7 @@ public class ProjectileSpawner : MonoBehaviour {
       projectile.GetComponent<Projectile>().spawner = this;
       projectile.SetActive(false);
       pool.Push(projectile);
+      projectiles.AddLast(projectile);
     }
   }
 
@@ -45,5 +47,11 @@ public class ProjectileSpawner : MonoBehaviour {
     arrow.SetActive(false);
     pool.Push(arrow);
     SendMessage("ProjectileReturned", SendMessageOptions.DontRequireReceiver);
+  }
+
+  void Dead() {
+    foreach (GameObject projectile in projectiles) {
+      Destroy(projectile);
+    }
   }
 }

@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &106924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 430132}
+  m_Layer: 0
+  m_Name: Bombable Walls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &122178
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,6 +31,48 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &143252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 488694}
+  m_Layer: 0
+  m_Name: Doors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &168798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 410002}
+  m_Layer: 0
+  m_Name: Rooms
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &410002
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 423842}
+  m_RootOrder: 0
 --- !u!4 &423842
 Transform:
   m_ObjectHideFlags: 1
@@ -25,9 +82,36 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 410002}
+  - {fileID: 488694}
+  - {fileID: 430132}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &430132
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 423842}
+  m_RootOrder: 2
+--- !u!4 &488694
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 423842}
+  m_RootOrder: 1
 --- !u!114 &11438024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41,6 +125,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overrideSeed: 0
   seed: 0
+  rooms: {fileID: 410002}
+  doors: {fileID: 488694}
+  bombableWalls: {fileID: 430132}
+  roomPrefab: {fileID: 199698, guid: 10d751ac466f643eeb9b1a61f781103c, type: 2}
+  entrancePrefab: {fileID: 155852, guid: 8654116e5df064e33aa15a7b9fb01d19, type: 2}
+  bossPrefab: {fileID: 145084, guid: c8b35896b993a49828ce490c42416bfb, type: 2}
+  goalPrefab: {fileID: 110450, guid: e3bc05c957ff94168889b1ab3e40cda9, type: 2}
+  leftWall: {fileID: 116114, guid: d467c1c79891a4acba1049f55afe402c, type: 2}
+  rightWall: {fileID: 114516, guid: 0af6ec07640334f6185e7100e6827c93, type: 2}
+  downWall: {fileID: 148484, guid: dcae42a4a715042bbb7eef84aca0f62f, type: 2}
+  upWall: {fileID: 163706, guid: b5628e281a2754e628bc91f5f001b811, type: 2}
+  leftDoor: {fileID: 117974, guid: 23255bdf50f3c46c6a7e9c3f73e5f576, type: 2}
+  rightDoor: {fileID: 175710, guid: 64998d630e2eb4448b2745692115f50d, type: 2}
+  downDoor: {fileID: 111966, guid: 4dd7d7f140b9d4318a63d27406645a52, type: 2}
+  upDoor: {fileID: 172528, guid: 76400ecf8b2874ba8b4180af334db268, type: 2}
+  standardRoomPrefabs:
+  - {fileID: 11461284, guid: e2523927c821c49dbb1b5f503df68e8b, type: 2}
+  bonusItemRoomPrefabs:
+  - {fileID: 11480624, guid: eceac3e0d7292413f9242b8c4865f023, type: 2}
+  - {fileID: 11473888, guid: 46d54a7a9bee04befafabd29324640d8, type: 2}
+  - {fileID: 11425042, guid: 3d9447040002648b18b9680a72052d18, type: 2}
+  - {fileID: 11434144, guid: af9dd7dc07e724122990ab0beb06434e, type: 2}
+  - {fileID: 11430732, guid: 503497fc515c24c959aeac117d38b668, type: 2}
+  - {fileID: 11412558, guid: 4a60a88624ec6477ab14b972a2deae4b, type: 2}
+  - {fileID: 11411772, guid: 1ab8d862076bd4842b665bd0b2860529, type: 2}
+  itemRoomPrefabs:
+  - {fileID: 11419028, guid: 0212c486f95374f478f46977de640cdd, type: 2}
+  - {fileID: 11411772, guid: 1ab8d862076bd4842b665bd0b2860529, type: 2}
+  enemyPrefabs:
+  - {fileID: 11448500, guid: 9a8bd9216ef8c40899ceb4dda2bc28cd, type: 2}
+  - {fileID: 11414714, guid: c40f5b39b58c14f07bf3963ac0f62854, type: 2}
+  - {fileID: 11447248, guid: 901e27328558349ae8e13fb2561ab83b, type: 2}
+  - {fileID: 11453858, guid: 0feca279df66d4e198eb86ac6c58c8c8, type: 2}
+  itemEnemyPrefabs:
+  - {fileID: 11463220, guid: 6a7d7dedb799f4f0cb463ea2c263a7eb, type: 2}
+  keyPrefab: {fileID: 167474, guid: d2c7bd288d4f94714b6a7b9249641c6b, type: 2}
+  mapPrefab: {fileID: 142986, guid: e93ca71fa939f44f58c8aebf5806fcde, type: 2}
+  compassPrefab: {fileID: 131528, guid: dac8c0d93e9104de6ae7b964fdba4289, type: 2}
+  bowPrefab: {fileID: 190584, guid: 86d7a5e4a10594c79a0ebd2fc321ea31, type: 2}
+  stairPrefab: {fileID: 178920, guid: 7c9835c98aff54dc48783940dcc3a6ec, type: 2}
+  lockedStairPrefab: {fileID: 120280, guid: ba2608cab94b64185b0026c8002a1019, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

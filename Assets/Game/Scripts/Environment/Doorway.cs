@@ -23,6 +23,5 @@ public class Doorway : MonoBehaviour {
       // Trigger gate spawns
       room.LockGates();
     }
-
   }
 }

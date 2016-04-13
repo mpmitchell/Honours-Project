@@ -20,7 +20,7 @@ public class GameGUI : MonoBehaviour {
     }
 
     playerHealth = PlayerController.player.GetComponent<Health>();
-    int maxHealth = playerHealth.getHealth();
+    int maxHealth = playerHealth.GetHealth();
 
     for (int i = 1; i < maxHealth; i++) {
       GameObject heart = Instantiate(heartPrefab) as GameObject;

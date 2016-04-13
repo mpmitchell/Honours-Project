@@ -9,6 +9,7 @@ public class Dragon : MovingEntity {
   [HideInInspector] public bool attacking = false;
 
   float distance;
+  int firedProjectiles = 0;
 
   void Start() {
     animator.GetBehaviour<DragonAnimator>().dragon = this;
@@ -33,13 +34,18 @@ public class Dragon : MovingEntity {
         transform.Translate(translation);
       }
 
-      if (Random.value <= 1.0f / fireChance) {
+      if (firedProjectiles == 0 && Random.value <= 1.0f / fireChance) {
         animator.SetTrigger("Attack");
         SendMessage("FireProjectile", new Vector3(-1.0f, 0.0f, 0.0f));
         SendMessage("FireProjectile", new Vector3(-1.0f, -0.5f, 0.0f));
         SendMessage("FireProjectile", new Vector3(-1.0f, 0.5f, 0.0f));
+        firedProjectiles = 3;
         attacking = true;
       }
     }
+  }
+
+  void ProjectileReturned() {
+    firedProjectiles--;
   }
 }

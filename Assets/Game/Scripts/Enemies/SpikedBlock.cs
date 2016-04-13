@@ -29,7 +29,6 @@ public class SpikedBlock : MovingEntity {
         // Check if player in Range
         if ((directions & (int)Direction.Left) != 0) {
           RaycastHit2D hit = Physics2D.BoxCast(transform.position, colliderExtents, 0.0f, Vector2.left, Mathf.Infinity, triggerLayerMask.value);
-          Debug.DrawLine(transform.position, transform.position + Vector3.left * 10.0f);
 
           if (hit.collider && hit.collider.gameObject.tag == "Player") {
             state = State.Moving;
@@ -39,7 +38,6 @@ public class SpikedBlock : MovingEntity {
 
         if ((directions & (int)Direction.Right) != 0) {
           RaycastHit2D hit = Physics2D.BoxCast(transform.position, colliderExtents, 0.0f, Vector2.right, Mathf.Infinity, triggerLayerMask.value);
-          Debug.DrawLine(transform.position, transform.position + Vector3.right * 10.0f);
 
           if (hit.collider && hit.collider.gameObject.tag == "Player") {
             state = State.Moving;
@@ -49,7 +47,6 @@ public class SpikedBlock : MovingEntity {
 
         if ((directions & (int)Direction.Down) != 0) {
           RaycastHit2D hit = Physics2D.BoxCast(transform.position, colliderExtents, 0.0f, Vector2.down, Mathf.Infinity, triggerLayerMask.value);
-          Debug.DrawLine(transform.position, transform.position + Vector3.down * 10.0f);
 
           if (hit.collider && hit.collider.gameObject.tag == "Player") {
             state = State.Moving;
@@ -59,7 +56,6 @@ public class SpikedBlock : MovingEntity {
 
         if ((directions & (int)Direction.Up) != 0) {
           RaycastHit2D hit = Physics2D.BoxCast(transform.position, colliderExtents, 0.0f, Vector2.up, Mathf.Infinity, triggerLayerMask.value);
-          Debug.DrawLine(transform.position, transform.position + Vector3.up * 10.0f);
 
           if (hit.collider && hit.collider.gameObject.tag == "Player") {
             state = State.Moving;

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Breakable
   - Lock
+  - Obstacle
+  - Crown
+  - MapCamera
   layers:
   - Default
   - TransparentFX
@@ -28,7 +31,7 @@ TagManager:
   - Spiked Block
   - Flying Projectile
   - Map UI
-  - 
+  - Stairs
   - 
   - 
   - 
@@ -48,6 +51,9 @@ TagManager:
     locked: 0
   - name: Level Objects
     uniqueID: 3850198033
+    locked: 0
+  - name: Wall Corners
+    uniqueID: 2231647613
     locked: 0
   - name: Walls
     uniqueID: 2058338267

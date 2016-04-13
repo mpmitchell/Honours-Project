@@ -4,11 +4,16 @@ using System.Collections.Generic;
 public class Room : MonoBehaviour {
 
   [SerializeField] bool startingRoom;
+  [SerializeField] bool bossRoom;
   [SerializeField] bool goalRoom;
   [SerializeField] SpriteRenderer mapUI;
-  [SerializeField] GameObject enemyContainer;
-  [SerializeField] GameObject gateContainer;
-  [SerializeField] GameObject rewardContainer;
+
+  public GameObject enemyContainer;
+  public GameObject gateContainer;
+  public GameObject rewardContainer;
+  public GameObject stairContainer;
+
+  [HideInInspector] public Node node;
 
   public static Room currentRoom = null;
 
@@ -36,6 +41,10 @@ public class Room : MonoBehaviour {
   public void Enter() {
     enemyContainer.SetActive(true);
     mapUI.color = Color.green;
+
+    if (bossRoom) {
+      stairContainer.SetActive(false);
+    }
   }
 
   public void Exit() {
