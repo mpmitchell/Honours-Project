@@ -6,11 +6,11 @@ public class MenuButtons : MonoBehaviour {
 
   public void Play() {
     Logger.OpenFile();
-    Seed.seed = Random.seed;
+    Logger.Log("Prefabbed Level");
     Room.rooms = new LinkedList<Room>();
     Room.defaultColour = Color.black;
     Room.highlightGoal = false;
-    SceneManager.LoadScene(1);
+    SceneManager.LoadScene(2);
   }
 
   public void ReturnToMenu() {
@@ -19,11 +19,11 @@ public class MenuButtons : MonoBehaviour {
 
   public void Replay() {
     Logger.OpenFile();
-    Random.seed = Seed.seed;
+    Logger.Log("Prefabbed Level");
     Room.rooms = new LinkedList<Room>();
     Room.defaultColour = Color.black;
     Room.highlightGoal = false;
-    SceneManager.LoadScene(1);
+    SceneManager.LoadScene(2);
   }
 
   public void Exit() {
