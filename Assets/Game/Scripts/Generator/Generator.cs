@@ -55,11 +55,9 @@ public class Generator : MonoBehaviour {
 
     if (overrideSeed) {
       Random.seed = seed;
-    } else {
-      seed = Random.seed;
-      Random.seed = Random.seed;
     }
-    Debug.Log("Seed " + seed);
+
+    Logger.Log("Seed," + Seed.seed.ToString());
 
     foreach (Obstacle obstacle in standardRoomPrefabs) {
       obstacle.used = 0;

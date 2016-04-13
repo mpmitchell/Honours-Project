@@ -26,7 +26,9 @@ public class GameGUI : MonoBehaviour {
       GameObject heart = Instantiate(heartPrefab) as GameObject;
       heart.transform.SetParent(healthBar.transform);
       heart.transform.localScale = new Vector3(0.3f, 0.3f, 1.0f);
-      heart.GetComponent<RectTransform>().anchoredPosition = health.Peek().GetComponent<RectTransform>().anchoredPosition + new Vector2(30.0f, 0.0f);
+      RectTransform rt = heart.GetComponent<RectTransform>();
+      RectTransform rt2 = health.Peek().GetComponent<RectTransform>();
+      rt.anchoredPosition = rt2.anchoredPosition + new Vector2(30.0f, 0.0f);
       health.Push(heart.GetComponent<Image>());
     }
   }
