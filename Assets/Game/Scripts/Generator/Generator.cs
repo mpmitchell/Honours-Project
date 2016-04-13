@@ -113,7 +113,7 @@ public class Generator : MonoBehaviour {
           node.AddChild(Type.Lock)
               .AddChild(Type.Hook)
               .AddChild(Type.CriticalPath)
-              .AddChild(Type.KeyPath)
+              .AddChild(Type.Key)
               .AddChild(Type.Lock)
               .AddChild(Type.CriticalPath)
               .AddChild(Type.ItemPath)
@@ -141,7 +141,7 @@ public class Generator : MonoBehaviour {
             if (Random.value <= 0.5f) {
               node.type = Type.Key;
             } else {
-              node.AddChild(Type.KeyPath);
+              node.AddChild(Type.Key);
             }
           }
           break;
@@ -155,7 +155,7 @@ public class Generator : MonoBehaviour {
               node.InsertChild(Type.Lock)
                   .AddChild(Type.Room)
                   .AddChild(Type.Item);
-              node.AddChild(Type.KeyPath);
+              node.AddChild(Type.Key);
             } else {
               node.AddChild(Type.Item);
             }
@@ -165,20 +165,10 @@ public class Generator : MonoBehaviour {
           break;
         }
 
-        case Type.KeyPath: {
-          if (Random.value <= 0.3f) {
-            node.type = Type.Key;
-          } else {
-            node.type = Type.Room;
-            node.AddChild(Type.Key);
-          }
-          break;
-        }
-
         case Type.Hook: {
           node.type = Type.Room;
           node.InsertChild(Type.Lock);
-          node.AddChild(Type.KeyPath);
+          node.AddChild(Type.Key);
           node.AddChild(Type.BonusItem);
           break;
         }
@@ -457,48 +447,104 @@ public class Generator : MonoBehaviour {
           }
         }
 
+        Node[] adjacentRooms = { null, null, null, null };
+
+        if (node.position.x -1 >= 0) {
+          adjacentRooms[0] = maps[node.position.mapNumber][node.position.x - 1, node.position.y];
+          if (adjacentRooms[0] != null && (adjacentRooms[0].type == Type.Boss || adjacentRooms[0].type == Type.Goal)) {
+            adjacentRooms[0] = null;
+          }
+        }
+        if (node.position.x + 1 < 7) {
+          adjacentRooms[1] = maps[node.position.mapNumber][node.position.x + 1, node.position.y];
+          if (adjacentRooms[1] != null && (adjacentRooms[1].type == Type.Boss || adjacentRooms[1].type == Type.Goal)) {
+            adjacentRooms[1] = null;
+          }
+        }
+        if (node.position.y - 1 >= 0) {
+          adjacentRooms[2] = maps[node.position.mapNumber][node.position.x, node.position.y - 1];
+          if (adjacentRooms[2] != null && (adjacentRooms[2].type == Type.Boss || adjacentRooms[2].type == Type.Goal)) {
+            adjacentRooms[2] = null;
+          }
+        }
+        if (node.position.y + 1 < 8) {
+          adjacentRooms[3] = maps[node.position.mapNumber][node.position.x, node.position.y + 1];
+          if (adjacentRooms[3] != null && (adjacentRooms[3].type == Type.Boss || adjacentRooms[3].type == Type.Goal)) {
+            adjacentRooms[3] = null;
+          }
+        }
+
+
         // Place walls
-        if (!connections[0]) {
-          if (node.type != Type.Boss && node.type != Type.Goal && node.position.x - 1 >= 0 && maps[node.position.mapNumber][node.position.x - 1, node.position.y]  != null && maps[node.position.mapNumber][node.position.x - 1, node.position.y].type != Type.Boss && maps[node.position.mapNumber][node.position.x - 1, node.position.y].type != Type.Goal && Random.value <= 0.4f) {
+        if (!connections[0] && node.bombableConnections[0] == null) {
+          if (node.type != Type.Boss && node.type != Type.Goal && adjacentRooms[0] != null && Random.value <= 0.4f) {
             GameObject wall = Instantiate(leftBombableWall) as GameObject;
             wall.transform.SetParent(node.room.transform, false);
             wall.transform.SetParent(bombableWalls, true);
+
+            adjacentRooms[0].bombableConnections[1] = node;
+            if (adjacentRooms[0].walls[1] != null) {
+              Debug.Log(adjacentRooms[0].walls[1]);
+              Destroy(adjacentRooms[0].walls[1]);
+            }
           } else {
             GameObject wall = Instantiate(leftWall) as GameObject;
             wall.transform.SetParent(node.room.transform, false);
+            node.walls[0] = wall;
           }
         }
 
-        if (!connections[1]) {
-          if (node.type != Type.Boss && node.type != Type.Goal && node.position.x + 1 < 7 && maps[node.position.mapNumber][node.position.x + 1, node.position.y] != null && maps[node.position.mapNumber][node.position.x + 1, node.position.y].type != Type.Boss && maps[node.position.mapNumber][node.position.x + 1, node.position.y].type != Type.Goal && Random.value <= 0.4f) {
+        if (!connections[1] && node.bombableConnections[1] == null) {
+          if (node.type != Type.Boss && node.type != Type.Goal && adjacentRooms[1] != null && Random.value <= 0.4f) {
             GameObject wall = Instantiate(rightBombableWall) as GameObject;
             wall.transform.SetParent(node.room.transform, false);
             wall.transform.SetParent(bombableWalls, true);
+
+            adjacentRooms[1].bombableConnections[0] = node;
+            if (adjacentRooms[1].walls[0] != null) {
+              Debug.Log(adjacentRooms[1].walls[0]);
+              Destroy(adjacentRooms[1].walls[0]);
+            }
           } else {
             GameObject wall = Instantiate(rightWall) as GameObject;
             wall.transform.SetParent(node.room.transform, false);
+            node.walls[1] = wall;
           }
         }
 
-        if (!connections[2]) {
-          if (node.type != Type.Boss && node.type != Type.Goal && node.position.y - 1 >= 0 && maps[node.position.mapNumber][node.position.x, node.position.y - 1] != null && maps[node.position.mapNumber][node.position.x, node.position.y - 1].type != Type.Boss && maps[node.position.mapNumber][node.position.x, node.position.y - 1].type != Type.Goal && Random.value <= 0.4f) {
+        if (!connections[2] && node.bombableConnections[2] == null) {
+          if (node.type != Type.Boss && node.type != Type.Goal && adjacentRooms[2] != null && Random.value <= 0.4f) {
             GameObject wall = Instantiate(downBombableWall) as GameObject;
             wall.transform.SetParent(node.room.transform, false);
             wall.transform.SetParent(bombableWalls, true);
+
+            adjacentRooms[2].bombableConnections[3] = node;
+            if (adjacentRooms[2].walls[3] != null) {
+              Debug.Log(adjacentRooms[2].walls[3]);
+              Destroy(adjacentRooms[2].walls[3]);
+            }
           } else {
             GameObject wall = Instantiate(downWall) as GameObject;
             wall.transform.SetParent(node.room.transform, false);
+            node.walls[2] = wall;
           }
         }
 
-        if (!connections[3]) {
-          if (node.type != Type.Boss && node.type != Type.Goal && node.position.y + 1 < 8 && maps[node.position.mapNumber][node.position.x, node.position.y + 1] != null && maps[node.position.mapNumber][node.position.x, node.position.y + 1].type != Type.Boss && maps[node.position.mapNumber][node.position.x, node.position.y + 1].type != Type.Goal && Random.value <= 0.4f) {
+        if (!connections[3] && node.bombableConnections[3] == null) {
+          if (node.type != Type.Boss && node.type != Type.Goal && adjacentRooms[3] != null && Random.value <= 0.4f) {
             GameObject wall = Instantiate(upBombableWall) as GameObject;
             wall.transform.SetParent(node.room.transform, false);
             wall.transform.SetParent(bombableWalls, true);
+
+            adjacentRooms[3].bombableConnections[2] = node;
+            if (adjacentRooms[3].walls[2] != null) {
+              Debug.Log(adjacentRooms[3].walls[2]);
+              Destroy(adjacentRooms[3].walls[2]);
+            }
           } else {
             GameObject wall = Instantiate(upWall) as GameObject;
             wall.transform.SetParent(node.room.transform, false);
+            node.walls[3] = wall;
           }
         }
       }

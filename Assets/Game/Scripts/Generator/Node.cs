@@ -14,6 +14,8 @@ public class Node {
   public Room room;
   public Obstacle obstacles;
   public int stairs = 0;
+  public Node[] bombableConnections = { null, null, null, null };
+  public GameObject[] walls = { null, null, null, null };
 
   public Node(Type type) {
     this.type = type;

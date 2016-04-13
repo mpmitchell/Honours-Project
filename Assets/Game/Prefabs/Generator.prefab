@@ -136,6 +136,10 @@ MonoBehaviour:
   rightWall: {fileID: 114516, guid: 0af6ec07640334f6185e7100e6827c93, type: 2}
   downWall: {fileID: 148484, guid: dcae42a4a715042bbb7eef84aca0f62f, type: 2}
   upWall: {fileID: 163706, guid: b5628e281a2754e628bc91f5f001b811, type: 2}
+  leftBombableWall: {fileID: 188164, guid: 57dc23943f5004380b4a87982b911be2, type: 2}
+  rightBombableWall: {fileID: 165184, guid: 202f642ceba0147af8993a016fa756a3, type: 2}
+  downBombableWall: {fileID: 187932, guid: 4a745abf2559846e88dc1aa2fa263683, type: 2}
+  upBombableWall: {fileID: 134290, guid: 8ed17fe8612c443b7a2d16b363e815dc, type: 2}
   leftDoor: {fileID: 117974, guid: 23255bdf50f3c46c6a7e9c3f73e5f576, type: 2}
   rightDoor: {fileID: 175710, guid: 64998d630e2eb4448b2745692115f50d, type: 2}
   downDoor: {fileID: 111966, guid: 4dd7d7f140b9d4318a63d27406645a52, type: 2}
