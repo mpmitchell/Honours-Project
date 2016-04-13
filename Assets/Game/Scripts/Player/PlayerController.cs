@@ -56,10 +56,12 @@ public class PlayerController : MovingEntity {
       }
 
       if (Input.GetButtonDown("Fire Arrow") && hasBow) {
+        Logger.Log("fire arrow");
         SendMessage("FireProjectile", direction);
       }
 
       if (Input.GetButtonDown("Drop Bomb") && bombCount > 0) {
+        Logger.Log("drop bomb");
         SendMessage("DropBomb");
         bombCount--;
         Camera.main.SendMessage("DropBomb");
@@ -74,6 +76,7 @@ public class PlayerController : MovingEntity {
   }
 
   protected override void Dead() {
+    Logger.Log("game over");
     SceneManager.LoadScene(4);
   }
 

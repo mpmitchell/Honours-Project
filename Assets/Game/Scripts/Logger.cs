@@ -16,7 +16,7 @@ public class Logger {
     if (file == null) {
       OpenFile();
     }
-    file.WriteLine(text);
+    file.WriteLine(System.DateTime.Now + "\t" + text);
     file.Flush();
   }
 }

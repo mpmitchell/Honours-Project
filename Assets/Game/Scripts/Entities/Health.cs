@@ -24,9 +24,11 @@ public class Health : MonoBehaviour {
   void Damage(int damage) {
     if (invincible <= 0) {
       if ((health -= damage) <= 0) {
+        Logger.Log("killed," + gameObject.name);
         animator.SetTrigger("Dead");
         SendMessage("Dying");
       } else {
+        Logger.Log("damaged," + gameObject.name);
         animator.SetTrigger("Hit");
         invincible = invincibilityFrames;
       }

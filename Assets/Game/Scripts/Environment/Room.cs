@@ -42,6 +42,8 @@ public class Room : MonoBehaviour {
     enemyContainer.SetActive(true);
     mapUI.color = Color.green;
 
+    Logger.Log("enter," + transform.name);
+
     if (bossRoom && enemyContainer.transform.childCount > 0) {
       stairContainer.SetActive(false);
     }
@@ -50,6 +52,8 @@ public class Room : MonoBehaviour {
   public void Exit() {
     enemyContainer.SetActive(false);
     gateContainer.SetActive(false);
+
+    Logger.Log("exit," + transform.name);
 
     if (goalRoom && highlightGoal) {
       mapUI.color = Color.red;
