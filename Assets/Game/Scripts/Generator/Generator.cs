@@ -51,6 +51,8 @@ public class Generator : MonoBehaviour {
   int currentMap = 0;
 
   void Start() {
+    Branch.branchNumber = 0;
+
     if (overrideSeed) {
       Random.seed = seed;
     } else {
@@ -58,6 +60,16 @@ public class Generator : MonoBehaviour {
       Random.seed = Random.seed;
     }
     Debug.Log("Seed " + seed);
+
+    foreach (Obstacle obstacle in standardRoomPrefabs) {
+      obstacle.used = 0;
+    }
+    foreach (Obstacle obstacle in bonusItemRoomPrefabs) {
+      obstacle.used = 0;
+    }
+    foreach (Obstacle obstacle in itemRoomPrefabs) {
+      obstacle.used = 0;
+    }
 
     GenerateGraph();
     AnnotateGraph();
@@ -357,10 +369,6 @@ public class Generator : MonoBehaviour {
         }
 
         node.stairs++;
-      }
-
-      if (node.children.Count > 3) {
-        Debug.LogError("CHILD\t" + node.room.name);
       }
 
       foreach (Node child in node.children) {
