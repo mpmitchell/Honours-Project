@@ -567,6 +567,12 @@ public class Generator : MonoBehaviour {
       foreach (Transform child in node.room.transform) {
         if (child.tag == "Obstacle") {
           node.obstacles = child.GetComponent<Obstacle>();
+
+          if (node.type == Type.Boss) {
+            if (node.parent.position.mapNumber == node.position.mapNumber && node.parent.position.x > node.position.x) {
+              child.localScale = new Vector3(-child.localScale.x, child.localScale.y, child.localScale.z);
+            }
+          }
         }
       }
     } else {
