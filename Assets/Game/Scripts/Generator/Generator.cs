@@ -24,6 +24,12 @@ public class Generator : MonoBehaviour {
   [SerializeField] GameObject downWall;
   [SerializeField] GameObject upWall;
 
+  [Header("Bombable Wall Prefabs")]
+  [SerializeField] GameObject leftBombableWall;
+  [SerializeField] GameObject rightBombableWall;
+  [SerializeField] GameObject downBombableWall;
+  [SerializeField] GameObject upBombableWall;
+
   [Header("Door Prefabs")]
   [SerializeField] GameObject leftDoor;
   [SerializeField] GameObject rightDoor;
@@ -54,6 +60,7 @@ public class Generator : MonoBehaviour {
     Branch.branchNumber = 0;
 
     if (overrideSeed) {
+      Seed.seed = seed;
       Random.seed = seed;
     }
 
@@ -129,10 +136,12 @@ public class Generator : MonoBehaviour {
           node.type = Type.CriticalRoom;
 
           if (Random.value <= 0.7f) {
-            Node criticalRoom = node.InsertChild(Type.CriticalRoom);
+            node.InsertChild(Type.Lock);
 
-            if (Random.value <= 0.3f) {
-              criticalRoom.InsertChild(Type.CriticalRoom);
+            if (Random.value <= 0.5f) {
+              node.type = Type.Key;
+            } else {
+              node.AddChild(Type.KeyPath);
             }
           }
           break;
@@ -143,8 +152,10 @@ public class Generator : MonoBehaviour {
             node.type = Type.Room;
 
             if (Random.value <= 0.4f) {
-              node.AddChild(Type.Room)
+              node.InsertChild(Type.Lock)
+                  .AddChild(Type.Room)
                   .AddChild(Type.Item);
+              node.AddChild(Type.KeyPath);
             } else {
               node.AddChild(Type.Item);
             }
@@ -159,41 +170,18 @@ public class Generator : MonoBehaviour {
             node.type = Type.Key;
           } else {
             node.type = Type.Room;
-
-            if (Random.value <= 0.5f) {
-              node.AddChild(Type.Key);
-            } else {
-              node.AddChild(Type.Room)
-                  .AddChild(Type.Key);
-            }
+            node.AddChild(Type.Key);
           }
           break;
         }
 
         case Type.Hook: {
           node.type = Type.Room;
-
-          if (Random.value <= 0.6f) {
-            node.InsertChild(Type.Lock);
-            node.AddChild(Type.KeyPath);
-          }
-
+          node.InsertChild(Type.Lock);
+          node.AddChild(Type.KeyPath);
           node.AddChild(Type.BonusItem);
           break;
         }
-
-        // case Type.CriticalRoom: {
-        //   if (Random.value <= 0.1f) {
-        //     if (Random.value <= 0.5f) {
-        //       node.AddChild(Type.KeyPath);
-        //       node.AddChild(Type.Lock)
-        //           .AddChild(Type.BonusItem);
-        //     } else {
-        //       node.AddChild(Type.BonusItem);
-        //     }
-        //   }
-        //   break;
-        // }
       }
 
       if (node.type != currentType) {
@@ -221,6 +209,10 @@ public class Generator : MonoBehaviour {
         } else {
           Branch newBranch = new Branch(child, branches[node.branchNumber]);
           branches.Add(newBranch.number, newBranch);
+        }
+
+        if (node.children.Count > 3) {
+          Debug.LogError("TOO MANY CHILDREN\t" + node.type);
         }
         openList.Enqueue(child);
       }
@@ -386,9 +378,9 @@ public class Generator : MonoBehaviour {
 
     if (node.position.mapNumber != node.parent.position.mapNumber) {
       if (node.parent.type == Type.Lock) {
-        node.parent.parent.room.name = "BREAK " + node.parent.parent.room.name;
+        node.parent.parent.room.name = "STAIRS " + node.parent.parent.room.name;
       } else {
-        node.parent.room.name = "BREAK " + node.parent.room.name;
+        node.parent.room.name = "STAIRS " + node.parent.room.name;
       }
     }
 
@@ -467,23 +459,47 @@ public class Generator : MonoBehaviour {
 
         // Place walls
         if (!connections[0]) {
-          GameObject wall = Instantiate(leftWall) as GameObject;
-          wall.transform.SetParent(node.room.transform, false);
+          if (node.type != Type.Boss && node.type != Type.Goal && node.position.x - 1 >= 0 && maps[node.position.mapNumber][node.position.x - 1, node.position.y]  != null && maps[node.position.mapNumber][node.position.x - 1, node.position.y].type != Type.Boss && maps[node.position.mapNumber][node.position.x - 1, node.position.y].type != Type.Goal && Random.value <= 0.4f) {
+            GameObject wall = Instantiate(leftBombableWall) as GameObject;
+            wall.transform.SetParent(node.room.transform, false);
+            wall.transform.SetParent(bombableWalls, true);
+          } else {
+            GameObject wall = Instantiate(leftWall) as GameObject;
+            wall.transform.SetParent(node.room.transform, false);
+          }
         }
 
         if (!connections[1]) {
-          GameObject wall = Instantiate(rightWall) as GameObject;
-          wall.transform.SetParent(node.room.transform, false);
+          if (node.type != Type.Boss && node.type != Type.Goal && node.position.x + 1 < 7 && maps[node.position.mapNumber][node.position.x + 1, node.position.y] != null && maps[node.position.mapNumber][node.position.x + 1, node.position.y].type != Type.Boss && maps[node.position.mapNumber][node.position.x + 1, node.position.y].type != Type.Goal && Random.value <= 0.4f) {
+            GameObject wall = Instantiate(rightBombableWall) as GameObject;
+            wall.transform.SetParent(node.room.transform, false);
+            wall.transform.SetParent(bombableWalls, true);
+          } else {
+            GameObject wall = Instantiate(rightWall) as GameObject;
+            wall.transform.SetParent(node.room.transform, false);
+          }
         }
 
         if (!connections[2]) {
-          GameObject wall = Instantiate(downWall) as GameObject;
-          wall.transform.SetParent(node.room.transform, false);
+          if (node.type != Type.Boss && node.type != Type.Goal && node.position.y - 1 >= 0 && maps[node.position.mapNumber][node.position.x, node.position.y - 1] != null && maps[node.position.mapNumber][node.position.x, node.position.y - 1].type != Type.Boss && maps[node.position.mapNumber][node.position.x, node.position.y - 1].type != Type.Goal && Random.value <= 0.4f) {
+            GameObject wall = Instantiate(downBombableWall) as GameObject;
+            wall.transform.SetParent(node.room.transform, false);
+            wall.transform.SetParent(bombableWalls, true);
+          } else {
+            GameObject wall = Instantiate(downWall) as GameObject;
+            wall.transform.SetParent(node.room.transform, false);
+          }
         }
 
         if (!connections[3]) {
-          GameObject wall = Instantiate(upWall) as GameObject;
-          wall.transform.SetParent(node.room.transform, false);
+          if (node.type != Type.Boss && node.type != Type.Goal && node.position.y + 1 < 8 && maps[node.position.mapNumber][node.position.x, node.position.y + 1] != null && maps[node.position.mapNumber][node.position.x, node.position.y + 1].type != Type.Boss && maps[node.position.mapNumber][node.position.x, node.position.y + 1].type != Type.Goal && Random.value <= 0.4f) {
+            GameObject wall = Instantiate(upBombableWall) as GameObject;
+            wall.transform.SetParent(node.room.transform, false);
+            wall.transform.SetParent(bombableWalls, true);
+          } else {
+            GameObject wall = Instantiate(upWall) as GameObject;
+            wall.transform.SetParent(node.room.transform, false);
+          }
         }
       }
 
