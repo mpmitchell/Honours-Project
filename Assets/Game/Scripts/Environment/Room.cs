@@ -42,7 +42,7 @@ public class Room : MonoBehaviour {
     enemyContainer.SetActive(true);
     mapUI.color = Color.green;
 
-    if (bossRoom) {
+    if (bossRoom && enemyContainer.transform.childCount > 0) {
       stairContainer.SetActive(false);
     }
   }
@@ -67,6 +67,10 @@ public class Room : MonoBehaviour {
       rewardContainer.SetActive(true);
 
       gateContainer.BroadcastMessage("RoomClear", SendMessageOptions.DontRequireReceiver);
+
+      if (bossRoom) {
+        stairContainer.SetActive(true);
+      }
     }
   }
 
