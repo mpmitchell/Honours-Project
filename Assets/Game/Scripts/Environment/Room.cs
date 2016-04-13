@@ -17,9 +17,9 @@ public class Room : MonoBehaviour {
 
   public static Room currentRoom = null;
 
-  static LinkedList<Room> rooms = new LinkedList<Room>();
-  static Color defaultColour = Color.black;
-  static bool highlightGoal = false;
+  public static LinkedList<Room> rooms;
+  public static Color defaultColour;
+  public static bool highlightGoal;
 
   void Awake() {
     foreach (Transform enemy in enemyContainer.transform) {

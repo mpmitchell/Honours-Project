@@ -201,9 +201,6 @@ public class Generator : MonoBehaviour {
           branches.Add(newBranch.number, newBranch);
         }
 
-        if (node.children.Count > 3) {
-          Debug.LogError("TOO MANY CHILDREN\t" + node.type);
-        }
         openList.Enqueue(child);
       }
     }
@@ -484,7 +481,6 @@ public class Generator : MonoBehaviour {
 
             adjacentRooms[0].bombableConnections[1] = node;
             if (adjacentRooms[0].walls[1] != null) {
-              Debug.Log(adjacentRooms[0].walls[1]);
               Destroy(adjacentRooms[0].walls[1]);
             }
           } else {
@@ -502,7 +498,6 @@ public class Generator : MonoBehaviour {
 
             adjacentRooms[1].bombableConnections[0] = node;
             if (adjacentRooms[1].walls[0] != null) {
-              Debug.Log(adjacentRooms[1].walls[0]);
               Destroy(adjacentRooms[1].walls[0]);
             }
           } else {
@@ -520,7 +515,6 @@ public class Generator : MonoBehaviour {
 
             adjacentRooms[2].bombableConnections[3] = node;
             if (adjacentRooms[2].walls[3] != null) {
-              Debug.Log(adjacentRooms[2].walls[3]);
               Destroy(adjacentRooms[2].walls[3]);
             }
           } else {
@@ -538,7 +532,6 @@ public class Generator : MonoBehaviour {
 
             adjacentRooms[3].bombableConnections[2] = node;
             if (adjacentRooms[3].walls[2] != null) {
-              Debug.Log(adjacentRooms[3].walls[2]);
               Destroy(adjacentRooms[3].walls[2]);
             }
           } else {
