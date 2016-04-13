@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameGUI : MonoBehaviour {
 
@@ -9,12 +10,15 @@ public class GameGUI : MonoBehaviour {
   [SerializeField] Sprite emptyHeartSprite;
   [SerializeField] Text keyText;
   [SerializeField] Text bombText;
+  [SerializeField] Text versionText;
 
   Stack<Image> health = new Stack<Image>();
 
   Health playerHealth;
 
   void Start() {
+    versionText.text = SceneManager.GetActiveScene().buildIndex.ToString();
+
     foreach (Transform child in healthBar.transform) {
       health.Push(child.gameObject.GetComponent<Image>());
     }
