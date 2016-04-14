@@ -11,12 +11,11 @@ public class SpikedBlock : MovingEntity {
   }
 
   State state = State.Idle;
-  Vector3 initialPosition;
+  Vector3? initialPosition = null;
 
   void Awake() {
     // Override MovingEntity.Awake()
     colliderExtents = GetComponent<BoxCollider2D>().bounds.extents;
-    initialPosition = transform.position;
   }
 
   void OnEnable() {
@@ -24,6 +23,10 @@ public class SpikedBlock : MovingEntity {
   }
 
   void Update() {
+    if (initialPosition == null) {
+      initialPosition = transform.position;
+    }
+
     switch (state) {
       case State.Idle: {
         // Check if player in Range
@@ -104,10 +107,10 @@ public class SpikedBlock : MovingEntity {
         Vector3 translation = GetDirectionVector() * speed * Time.deltaTime;
 
         // If moved beyond initialPosition become Idle
-        if (translation.x < 0.0f && transform.position.x <= initialPosition.x ||
-            translation.x > 0.0f && transform.position.x >= initialPosition.x ||
-            translation.y < 0.0f && transform.position.y <= initialPosition.y ||
-            translation.y > 0.0f && transform.position.y >= initialPosition.y) {
+        if (translation.x < 0.0f && transform.position.x <= initialPosition.Value.x ||
+            translation.x > 0.0f && transform.position.x >= initialPosition.Value.x ||
+            translation.y < 0.0f && transform.position.y <= initialPosition.Value.y ||
+            translation.y > 0.0f && transform.position.y >= initialPosition.Value.y) {
           state = State.Idle;
         } else {
           transform.Translate(translation);
