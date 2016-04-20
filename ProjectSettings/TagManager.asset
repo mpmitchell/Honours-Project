@@ -7,7 +7,6 @@ TagManager:
   - Breakable
   - Lock
   - Obstacle
-  - Crown
   - MapCamera
   layers:
   - Default
